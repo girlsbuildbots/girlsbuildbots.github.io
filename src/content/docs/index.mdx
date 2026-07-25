@@ -1,40 +1,80 @@
 ---
-title: Welcome to Starlight
-description: Get started building your docs site with Starlight.
-template: splash # Remove or comment out this line to display the site sidebar on this page.
+title: Girls Build Bots
+description: >-
+  Girl Scout troops and FIRST robotics teams, paired up — so Brownies, Juniors,
+  and Cadettes earn official STEM badges with real robots and real mentors.
+template: splash
 hero:
-  tagline: Congrats on setting up a new Starlight project!
-  image:
-    file: ../../assets/houston.webp
+  tagline: >-
+    STEM badges, earned the real way — with real robots and real mentors. We
+    connect Girl Scout troops with FIRST robotics teams so Brownies, Juniors,
+    and Cadettes earn official STEM badges through hands-on workshops taught by
+    students who build competition robots.
   actions:
-    - text: Example Guide
-      link: /guides/example/
+    - text: Pair up a troop & team
+      link: /pairing/
       icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
-      icon: external
+    - text: Browse the badge library
+      link: /brownies/
+      icon: open-book
       variant: minimal
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
 
-## Next steps
+<CardGrid>
+  <Card title="Why this exists" icon="puzzle">
+    Robotics outreach events are everywhere — but most aren't structured to let
+    Girl Scouts earn their *official* badges. Troop leaders often don't have the
+    technical background to run STEM badge work themselves, and robotics teams
+    don't know what badge requirements look like. Girls end up doing great STEM
+    activities that count for… nothing on their vest.
 
-<CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
-	</Card>
-	<Card title="Change page layout" icon="document">
-		Delete `template: splash` in `src/content/docs/index.mdx` to display a
-		sidebar on this page.
-	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
-	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
-	</Card>
+    Girls Build Bots closes that gap with a **badge library** covering the STEM
+    badges at each level, **ready-to-teach curriculum, slide decks, and mentor
+    guides** for the Robotics series, and a **pairing hub** where troops and
+    teams find each other.
+  </Card>
+
+  <Card title="How a workshop works" icon="rocket">
+    1. **Troop leaders pick badges and review the official requirements** in the
+       free Volunteer Toolkit, then order badges from the council shop.
+    2. **The robotics team preps with our materials** — full meeting plans,
+       slide decks, mentor guides, and checklists. Mentor training takes about
+       an hour.
+    3. **Scouts build, program, and present** — capped with a real
+       competition-robot demo and a showcase for families. Then leave a review
+       on the badge page so the next team teaches it even better.
+  </Card>
 </CardGrid>
+
+## The badge library by level
+
+<CardGrid>
+  <LinkCard
+    title="🐛 Brownies · 22 badges"
+    description="Grades 2–3. Discovery and play: robots follow instructions, code is a list of steps, engineers try and try again."
+    href="/brownies/"
+  />
+  <LinkCard
+    title="🔁 Juniors · 24 badges"
+    description="Grades 4–5. Real programming logic and structured design — loops, events, and the full engineering design process."
+    href="/juniors/"
+  />
+  <LinkCard
+    title="⚙️ Cadettes · 16 badges"
+    description="Grades 6–8. Real engineering and real science: autonomous programming, forensics, media, and public pitches."
+    href="/cadettes/"
+  />
+  <LinkCard
+    title="📦 Resources & downloads"
+    description="Curriculum documents, Marp slide decks, the planning guide, and the best free teaching platforms."
+    href="/resources/"
+  />
+</CardGrid>
+
+:::note[A Girl Scout Gold Award Project · Marietta, GA]
+Girls Build Bots was created by Gabriella Angryk (Troop 383, Girl Scouts of
+Greater Atlanta) with Walton Robotics — and it's built so any troop and any
+team, anywhere, can use it.
+:::

@@ -1,0 +1,59 @@
+---
+// Small tinted pill under the page title: which level (and family) a badge
+// belongs to. Colors come from the level palette in src/styles/custom.css.
+interface Props {
+  level: 'brownies' | 'juniors' | 'cadettes';
+  family?: string;
+  icon?: string;
+}
+const { level, family, icon } = Astro.props;
+
+const LABEL = {
+  brownies: 'Brownies · Grades 2–3',
+  juniors: 'Juniors · Grades 4–5',
+  cadettes: 'Cadettes · Grades 6–8',
+} as const;
+---
+
+<p class={`level-pill level-${level} not-content`}>
+  {icon && <span class="ico">{icon}</span>}
+  <a href={`/${level}/`}>{LABEL[level]}</a>
+  {family && <span class="fam">· {family}</span>}
+</p>
+
+<style>
+  .level-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    margin: -0.5rem 0 1.25rem;
+    padding: 0.25em 0.75em;
+    font-size: var(--sl-text-xs);
+    font-weight: 600;
+    line-height: 1.6;
+    border-radius: 999px;
+    border: 1px solid var(--pill);
+    color: var(--pill);
+    background: color-mix(in srgb, var(--pill) 10%, transparent);
+  }
+  .level-pill a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .level-pill a:hover {
+    text-decoration: underline;
+  }
+  .level-pill .fam {
+    opacity: 0.85;
+    font-weight: 500;
+  }
+  .level-brownies {
+    --pill: var(--gbb-brownie);
+  }
+  .level-juniors {
+    --pill: var(--gbb-junior);
+  }
+  .level-cadettes {
+    --pill: var(--gbb-cadette);
+  }
+</style>

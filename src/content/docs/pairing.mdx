@@ -1,0 +1,42 @@
+---
+title: Troops, meet teams. Teams, meet troops.
+description: >-
+  The pairing hub — find a FIRST robotics team near you, find Girl Scout troops
+  to serve, or ask us to introduce you to a partner in your area.
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+import PairingForm from '../../components/PairingForm.astro';
+
+<CardGrid>
+  <Card title="For Girl Scout troops" icon="star">
+    **Find a FIRST robotics team near you**
+
+    - [FIRST Team & Event Search](https://www.firstinspires.org/team-event-search) —
+      the official locator. Search your ZIP code for FRC and FTC teams; team
+      pages list contact info.
+    - Ask your local high school — most FRC teams are school-based and reachable
+      through the front office or an engineering teacher.
+    - Attend a competition (free to watch!) and talk to teams at their pits —
+      they love visitors.
+    - In metro Atlanta? **Walton Robotics (FRC 2974)** helped build this
+      program — use the pairing form below.
+  </Card>
+
+  <Card title="For robotics teams" icon="setting">
+    **Find Girl Scout troops to serve**
+
+    - Contact your local Girl Scout council's program staff — in metro Atlanta
+      that's [Girl Scouts of Greater Atlanta](https://www.girlscoutsatl.org);
+      elsewhere, use the
+      [council finder](https://www.girlscouts.org/en/footer/find-your-council.html).
+    - Councils can post your workshop in their event calendars and reach
+      hundreds of troops at once.
+    - Service Unit meetings (local troop leader gatherings) are a great place to
+      pitch a workshop.
+    - Everything you need to teach is free on this site: curriculum, slides,
+      mentor guides, and surveys.
+  </Card>
+</CardGrid>
+
+<PairingForm />

@@ -1,0 +1,30 @@
+/* Girls Build Bots branding — Girl Scout green accent + per-level tints. */
+
+:root {
+  /* Girl Scout green #00743F, expanded into Starlight's accent ramp. */
+  --sl-color-accent-low: #002d19;
+  --sl-color-accent: #00743f;
+  --sl-color-accent-high: #8ad4ac;
+
+  /* Level tints, used by LevelPill.astro. Lightened for dark mode contrast. */
+  --gbb-brownie: #c2915f;
+  --gbb-junior: #52b483;
+  --gbb-cadette: #c9ae7b;
+}
+
+:root[data-theme='light'] {
+  --sl-color-accent-low: #b7e6cb;
+  --sl-color-accent: #00743f;
+  --sl-color-accent-high: #00381f;
+
+  --gbb-brownie: #7a4a21;
+  --gbb-junior: #00743f;
+  --gbb-cadette: #8c6f3f;
+}
+
+/* Duration / ratio / tooling chips on badge and level pages. */
+.meeting-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}

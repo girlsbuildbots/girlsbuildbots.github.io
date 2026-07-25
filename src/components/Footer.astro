@@ -1,0 +1,48 @@
+---
+// Starlight Footer override: keeps the default pagination/last-updated block,
+// then appends the project attribution and the GSUSA / FIRST disclaimer from
+// _source/index.html.
+import Default from '@astrojs/starlight/components/Footer.astro';
+---
+
+<Default><slot /></Default>
+
+<div class="gbb-footer not-content">
+  <div>
+    <strong>Girls Build Bots</strong><br />
+    A Girl Scout Gold Award project<br />
+    <span class="mono">Troop 383 · Walton Robotics FRC 2974 · Marietta, GA</span>
+  </div>
+  <p class="fine">
+    This site provides original curriculum and resource guides aligned with Girl
+    Scout STEM badges. It is not an official Girl Scouts of the USA resource.
+    Official badge requirements are © GSUSA and available free to troop leaders
+    in the Volunteer Toolkit; badges are awarded by troop leaders after verifying
+    the official steps. FIRST® is a registered trademark of For Inspiration and
+    Recognition of Science and Technology.
+  </p>
+</div>
+
+<style>
+  .gbb-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--sl-color-gray-5);
+    font-size: var(--sl-text-xs);
+    color: var(--sl-color-gray-3);
+  }
+  .gbb-footer strong {
+    color: var(--sl-color-white);
+  }
+  .gbb-footer .mono {
+    font-family: var(--sl-font-mono);
+  }
+  .gbb-footer .fine {
+    max-width: 34rem;
+    margin: 0;
+  }
+</style>
