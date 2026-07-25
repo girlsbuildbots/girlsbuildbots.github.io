@@ -1,0 +1,136 @@
+---
+// Troop ↔ team pairing request. Posts to Formspree — the form ID placeholder is
+// swapped for the real one by a human before launch.
+---
+
+<div class="pairing-card not-content">
+  <h3>🤝 The Pairing Form</h3>
+  <p>
+    Whether you're a troop looking for a team or a team looking for troops, fill
+    this out and we'll pair you with a partner in your area. (Your info is only
+    used for pairing — nothing else.)
+  </p>
+
+  <form action="https://formspree.io/f/YOUR_PAIRING_FORM_ID" method="POST">
+    <input type="hidden" name="form_type" value="pairing-request" />
+
+    <div class="row">
+      <div class="col">
+        <label for="f-role">I am a…</label>
+        <select id="f-role" name="role" required>
+          <option value="">Choose one</option>
+          <option>Girl Scout troop leader — looking for a robotics team</option>
+          <option>Robotics team member / mentor — looking for troops</option>
+          <option>Parent / other</option>
+        </select>
+
+        <label for="f-name">Name</label>
+        <input id="f-name" name="name" required autocomplete="name" />
+
+        <label for="f-email">Email</label>
+        <input id="f-email" name="email" type="email" required autocomplete="email" />
+
+        <label for="f-num">Troop number or team number</label>
+        <input id="f-num" name="troop_or_team_number" placeholder="e.g., Troop 383 or FRC 2974" />
+      </div>
+
+      <div class="col">
+        <label for="f-loc">City &amp; state</label>
+        <input id="f-loc" name="location" required placeholder="e.g., Marietta, GA" />
+
+        <label for="f-levels">Levels interested in</label>
+        <select id="f-levels" name="levels">
+          <option>Brownies (grades 2–3)</option>
+          <option>Juniors (grades 4–5)</option>
+          <option>Cadettes (grades 6–8)</option>
+          <option>Multiple levels</option>
+        </select>
+
+        <label for="f-badges">Badges of interest</label>
+        <input id="f-badges" name="badges" placeholder="e.g., Robotics series, Cybersecurity Basics" />
+
+        <label for="f-msg">Anything else?</label>
+        <textarea id="f-msg" name="message" rows="3" placeholder="Group size, timing, location constraints…"
+        ></textarea>
+      </div>
+    </div>
+
+    <button type="submit">Request a pairing</button>
+    <p class="hint">
+      Submissions go straight to the Girls Build Bots inbox — we'll introduce you
+      to a partner by email, typically within a week.
+    </p>
+  </form>
+</div>
+
+<style>
+  .pairing-card {
+    margin-top: 1.5rem;
+    padding: 1.25rem 1.5rem 1.5rem;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.5rem;
+    background: var(--sl-color-gray-7, var(--sl-color-gray-6));
+  }
+  .pairing-card h3 {
+    margin: 0 0 0.5rem;
+    font-size: var(--sl-text-h4);
+  }
+  .pairing-card > p {
+    font-size: var(--sl-text-sm);
+    color: var(--sl-color-gray-2);
+  }
+  form {
+    margin-top: 1rem;
+  }
+  .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 1.25rem;
+  }
+  @media (max-width: 40rem) {
+    .row {
+      grid-template-columns: 1fr;
+    }
+  }
+  .col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  label {
+    margin-top: 0.6rem;
+    font-size: var(--sl-text-sm);
+    font-weight: 600;
+  }
+  input,
+  select,
+  textarea {
+    width: 100%;
+    padding: 0.5rem 0.6rem;
+    font: inherit;
+    font-size: var(--sl-text-sm);
+    color: var(--sl-color-white);
+    background: var(--sl-color-black);
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.35rem;
+  }
+  button {
+    margin-top: 1rem;
+    padding: 0.55rem 1.2rem;
+    font: inherit;
+    font-weight: 600;
+    color: var(--sl-color-black);
+    background: var(--sl-color-accent);
+    border: 0;
+    border-radius: 0.35rem;
+    cursor: pointer;
+  }
+  button:hover {
+    background: var(--sl-color-accent-high);
+  }
+  .hint {
+    margin-top: 0.6rem;
+    font-size: var(--sl-text-xs);
+    color: var(--sl-color-gray-3);
+  }
+</style>
