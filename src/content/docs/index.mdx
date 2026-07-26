@@ -4,6 +4,13 @@ description: >-
   Girl Scout troops and FIRST robotics teams, paired up — so Brownies, Juniors,
   and Cadettes earn official STEM badges with real robots and real mentors.
 template: splash
+head:
+  # Starlight defaults every page to og:type=article; the landing page is the
+  # site itself. Badge pages keep the article default.
+  - tag: meta
+    attrs:
+      property: 'og:type'
+      content: website
 hero:
   tagline: >-
     STEM badges, earned the real way — with real robots and real mentors. We

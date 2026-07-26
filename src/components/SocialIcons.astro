@@ -1,0 +1,62 @@
+---
+// Starlight SocialIcons override: puts the five top-level destinations in the
+// header's right group, ahead of the default social icons, so the level
+// overviews, pairing hub, and resources are one click away from any page.
+//
+// The left sidebar remains primary navigation (and is the only nav below the
+// breakpoint) — this is an added shortcut, not a replacement.
+import Default from '@astrojs/starlight/components/SocialIcons.astro';
+
+const links = [
+  { label: 'Brownies', href: '/brownies/' },
+  { label: 'Juniors', href: '/juniors/' },
+  { label: 'Cadettes', href: '/cadettes/' },
+  { label: 'Pairing', href: '/pairing/' },
+  { label: 'Resources', href: '/resources/' },
+];
+
+const pathname = Astro.url.pathname;
+---
+
+<nav class="gbb-nav" aria-label="Sections">
+  {
+    links.map(({ label, href }) => (
+      <a href={href} aria-current={pathname.startsWith(href) ? 'true' : undefined}>
+        {label}
+      </a>
+    ))
+  }
+</nav>
+
+<Default><slot /></Default>
+
+<style>
+  .gbb-nav {
+    display: none;
+    gap: 1rem;
+    align-items: center;
+  }
+  .gbb-nav a {
+    color: var(--sl-color-gray-2);
+    text-decoration: none;
+    font-size: var(--sl-text-sm);
+    line-height: 1;
+    padding: 0.35rem 0;
+    border-bottom: 2px solid transparent;
+  }
+  .gbb-nav a:hover {
+    color: var(--sl-color-white);
+  }
+  .gbb-nav a[aria-current='true'] {
+    color: var(--sl-color-white);
+    border-bottom-color: var(--sl-color-text-accent);
+  }
+
+  /* Only shown once there is room beside the search box; the sidebar covers
+     narrower viewports. */
+  @media (min-width: 72rem) {
+    .gbb-nav {
+      display: flex;
+    }
+  }
+</style>
