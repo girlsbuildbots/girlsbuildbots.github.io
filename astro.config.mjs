@@ -16,7 +16,45 @@ export default defineConfig({
 			customCss: ['./src/styles/custom.css'],
 			components: {
 				Footer: './src/components/Footer.astro',
+				SocialIcons: './src/components/SocialIcons.astro',
 			},
+			// Starlight already emits per-page description, og:title/url/description
+			// and twitter:card. Only the card image is missing — and it is added here
+			// rather than as og:title/description overrides, because Starlight's head
+			// merge would replace the per-page values with site-wide constants.
+			// Twitter falls back to the og:* tags for title and description.
+			head: [
+				{
+					tag: 'meta',
+					attrs: {
+						property: 'og:image',
+						content: 'https://girlsbuildbots.github.io/og-image.png',
+					},
+				},
+				{
+					tag: 'meta',
+					attrs: { property: 'og:image:width', content: '1200' },
+				},
+				{
+					tag: 'meta',
+					attrs: { property: 'og:image:height', content: '630' },
+				},
+				{
+					tag: 'meta',
+					attrs: {
+						property: 'og:image:alt',
+						content:
+							'Girls Build Bots — STEM badges earned the real way, with real robots and real mentors.',
+					},
+				},
+				{
+					tag: 'meta',
+					attrs: {
+						name: 'twitter:image',
+						content: 'https://girlsbuildbots.github.io/og-image.png',
+					},
+				},
+			],
 			social: [
 				{
 					icon: 'github',
