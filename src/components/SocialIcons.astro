@@ -8,11 +8,13 @@
 import Default from '@astrojs/starlight/components/SocialIcons.astro';
 
 const links = [
-  { label: 'Brownies', href: '/brownies/' },
-  { label: 'Juniors', href: '/juniors/' },
-  { label: 'Cadettes', href: '/cadettes/' },
+  { label: 'Brownies', href: '/brownies/', level: 'brownie' },
+  { label: 'Juniors', href: '/juniors/', level: 'junior' },
+  { label: 'Cadettes', href: '/cadettes/', level: 'cadette' },
   { label: 'Pairing', href: '/pairing/' },
   { label: 'Resources', href: '/resources/' },
+  { label: 'Share your impact', href: '/share-your-impact/' },
+  { label: 'About', href: '/about/' },
 ];
 
 const pathname = Astro.url.pathname;
@@ -20,8 +22,12 @@ const pathname = Astro.url.pathname;
 
 <nav class="gbb-nav" aria-label="Sections">
   {
-    links.map(({ label, href }) => (
-      <a href={href} aria-current={pathname.startsWith(href) ? 'true' : undefined}>
+    links.map(({ label, href, level }) => (
+      <a
+        href={href}
+        class={level ? `lvl lvl-${level}` : undefined}
+        aria-current={pathname.startsWith(href) ? 'true' : undefined}
+      >
         {label}
       </a>
     ))
@@ -50,6 +56,27 @@ const pathname = Astro.url.pathname;
   .gbb-nav a[aria-current='true'] {
     color: var(--sl-color-white);
     border-bottom-color: var(--sl-color-text-accent);
+  }
+
+  /* The three level links carry a dot in their level colour, matching the
+     sidebar groups and the band on each level's pages. */
+  .gbb-nav a.lvl::before {
+    content: '';
+    display: inline-block;
+    width: 0.5em;
+    height: 0.5em;
+    margin-inline-end: 0.4em;
+    border-radius: 50%;
+    background: var(--dot);
+  }
+  .lvl-brownie {
+    --dot: var(--gbb-band-brownie);
+  }
+  .lvl-junior {
+    --dot: var(--gbb-band-junior);
+  }
+  .lvl-cadette {
+    --dot: var(--gbb-band-cadette);
   }
 
   /* Only shown once there is room beside the search box; the sidebar covers

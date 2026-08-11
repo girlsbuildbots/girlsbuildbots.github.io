@@ -1,0 +1,27 @@
+---
+// Starlight owns the <html> element, so a page can't be given a data-level
+// attribute without forking the theme. Emitting the palette here instead is the
+// Starlight-native equivalent: it is server-rendered from the page's own
+// `level` frontmatter (no path-sniffing, no JS, no flash of the wrong colour),
+// and it recolours every accent Starlight draws — sidebar active state, links,
+// checklist checkboxes, buttons — which is what makes the level dominant.
+//
+// The palettes themselves live in src/styles/custom.css.
+import Default from '@astrojs/starlight/components/Head.astro';
+
+const level = Astro.locals.starlightRoute?.entry?.data?.level;
+---
+
+<Default />
+
+{
+  level && (
+    <style
+      set:html={`:root{
+  --sl-color-accent-low: var(--${level}-low);
+  --sl-color-accent: var(--${level}-accent);
+  --sl-color-accent-high: var(--${level}-high);
+}`}
+    />
+  )
+}

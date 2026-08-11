@@ -15,7 +15,8 @@ export default defineConfig({
 				'Girl Scout troops and FIRST robotics teams, paired up — with ready-to-teach curriculum for 36 STEM badges.',
 			customCss: ['./src/styles/custom.css'],
 			components: {
-				Footer: './src/components/Footer.astro',
+				Head: './src/components/Head.astro',
+					Footer: './src/components/Footer.astro',
 				SocialIcons: './src/components/SocialIcons.astro',
 			},
 			// Starlight already emits per-page description, og:title/url/description

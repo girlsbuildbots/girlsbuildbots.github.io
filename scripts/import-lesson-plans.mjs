@@ -160,6 +160,7 @@ function page(plan, { badge, family, level, levelKey }, base, R) {
   return `---
 title: ${yaml(badge.title)}
 description: ${yaml(firstSentence(badge.about))}
+level: ${levelKey.slice(0, -1)}
 ---
 
 import { Badge } from '@astrojs/starlight/components';

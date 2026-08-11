@@ -70,3 +70,129 @@
     grid-template-columns: 1fr 1fr;
   }
 }
+
+/* ─── Per-level dominant colour ──────────────────────────────────────────────
+ * Each Girl Scout level owns the accent on its own pages, so a visitor always
+ * knows which level she is browsing. Palettes live here; Head.astro maps the
+ * right set onto Starlight's accent variables for the page being rendered.
+ *
+ * White on the three band primaries passes WCAG AA:
+ *   Brownie #6C4A1F 7.96:1 · Junior #00743F 5.88:1 · Cadette #8C6F3F 4.70:1
+ * Dark-mode primaries are lightened ~18% so brown and khaki stay visible.
+ */
+:root {
+  /* Band fill — identical in both themes, always paired with white text. */
+  --gbb-band-brownie: #6c4a1f;
+  --gbb-band-junior: #00743f;
+  --gbb-band-cadette: #8c6f3f;
+
+  /* Dark theme (Starlight's default): low = deep, high = the text-safe end. */
+  --brownie-low: #2f1f0e;
+  --brownie-accent: #b27334;
+  --brownie-high: #ddb388;
+
+  --junior-low: #002d19;
+  --junior-accent: #00743f;
+  --junior-high: #8ad4ac;
+
+  --cadette-low: #312716;
+  --cadette-accent: #b89861;
+  --cadette-high: #d3bf9c;
+}
+
+:root[data-theme='light'] {
+  /* Light theme: low = tint, high = the deepened text/link colour. */
+  --brownie-low: #f4e9dd;
+  --brownie-accent: #6c4a1f;
+  --brownie-high: #4f3317;
+
+  --junior-low: #e2f0e7;
+  --junior-accent: #00743f;
+  --junior-high: #00381f;
+
+  --cadette-low: #f1ebdc;
+  --cadette-accent: #8c6f3f;
+  --cadette-high: #7a6234;
+}
+
+/* Level band at the top of every badge page and level overview. */
+.level-band {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5em;
+  margin: -0.5rem 0 1.5rem;
+  padding: 0.55em 1em;
+  border-radius: 0.4rem;
+  color: #fff;
+  background: var(--band);
+  font-size: var(--sl-text-sm);
+  font-weight: 600;
+}
+
+.level-band a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.level-band a:hover {
+  text-decoration: underline;
+}
+
+.level-band .fam {
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.level-band .grades {
+  font-weight: 400;
+  opacity: 0.85;
+}
+
+.band-brownie {
+  --band: var(--gbb-band-brownie);
+}
+.band-junior {
+  --band: var(--gbb-band-junior);
+}
+.band-cadette {
+  --band: var(--gbb-band-cadette);
+}
+
+
+/* Sidebar wayfinding: a permanent dot on each level group, visible from every
+ * page so the colour system is learnable site-wide. Starlight renders the three
+ * level groups as <details> in the top-level list; they are positioned after
+ * the three standalone links (Pairing, About, Share your impact), so the
+ * indexes below track the sidebar order in astro.config.mjs.
+ */
+.sidebar-content ul.top-level > li > details > summary .group-label > span::before {
+  content: '';
+  display: inline-block;
+  width: 0.6em;
+  height: 0.6em;
+  margin-inline-end: 0.5em;
+  border-radius: 50%;
+  background: var(--dot, transparent);
+}
+
+.sidebar-content ul.top-level > li:nth-child(4) > details > summary .group-label > span {
+  --dot: var(--gbb-band-brownie);
+}
+.sidebar-content ul.top-level > li:nth-child(5) > details > summary .group-label > span {
+  --dot: var(--gbb-band-junior);
+}
+.sidebar-content ul.top-level > li:nth-child(6) > details > summary .group-label > span {
+  --dot: var(--gbb-band-cadette);
+}
+
+/* Landing page: the three level cards carry their level colour. */
+.sl-link-card:has(a[href='/brownies/']) {
+  border-inline-start: 4px solid var(--gbb-band-brownie);
+}
+.sl-link-card:has(a[href='/juniors/']) {
+  border-inline-start: 4px solid var(--gbb-band-junior);
+}
+.sl-link-card:has(a[href='/cadettes/']) {
+  border-inline-start: 4px solid var(--gbb-band-cadette);
+}

@@ -103,6 +103,7 @@ function badgePage(badge, level, levelKey, family, R) {
   return `---
 title: ${yaml(badge.title)}
 description: ${yaml(firstSentence(badge.about))}
+level: ${levelKey.slice(0, -1)}
 ---
 
 import { Badge } from '@astrojs/starlight/components';
@@ -135,6 +136,7 @@ function levelIndexPage(level, levelKey, badgeCount) {
   return `---
 title: ${yaml(`${level.name} STEM Badges`)}
 description: ${yaml(`${level.grades} · ${badgeCount} STEM badges. ${firstSentence(level.tagline)}`)}
+level: ${levelKey.slice(0, -1)}
 ---
 
 import { Badge } from '@astrojs/starlight/components';
