@@ -64,6 +64,7 @@ export default defineConfig({
 			],
 			sidebar: [
 				{ label: 'Pair up a troop & team', slug: 'pairing' },
+				{ label: '📣 Share your impact', slug: 'share-your-impact' },
 				...badgeSidebar,
 				{ label: 'Resources & downloads', slug: 'resources' },
 			],
