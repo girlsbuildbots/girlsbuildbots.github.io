@@ -56,13 +56,6 @@ export default defineConfig({
 					},
 				},
 			],
-			social: [
-				{
-					icon: 'github',
-					label: 'GitHub',
-					href: 'https://github.com/girlsbuildbots/girlsbuildbots.github.io',
-				},
-			],
 			sidebar: [
 				{ label: 'Pair up a troop & team', slug: 'pairing' },
 				{ label: 'About Gabi', slug: 'about' },
