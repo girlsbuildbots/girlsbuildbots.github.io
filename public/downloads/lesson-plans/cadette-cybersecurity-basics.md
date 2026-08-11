@@ -1,0 +1,75 @@
+# Girls Build Bots — Cadette Cybersecurity Basics
+### Badge-aligned workshop guide for robotics-team-led outreach
+**Level:** Cadettes (Grades 6–8) · **Badge:** Cybersecurity — Cybersecurity Basics
+**Series:** Cybersecurity (Basics · Safeguards · Investigator)
+**Format:** One 2-hour session · **Ratio:** 1 mentor per 5–6 Scouts
+**Who runs it:** A FIRST robotics team (FLL / FTC / FRC) leading the session. A physical robot is a nice bonus but **not required** — every activity runs on props and free browser tools.
+
+> **Troop Leaders:** This curriculum is designed to *align with* the Cadette Cybersecurity badge series. Official badge requirements are in your Girl Scout Volunteer Toolkit (VTK). Verify completed activities against the official steps before awarding badges. Badges are purchased through your council shop.
+
+---
+
+## The through-line: understanding, protecting, investigating
+
+Cadettes get the honest, technical version: how the internet actually moves their data, what encryption really does, and what happens to information they hand over. Knowledge over fear — a Cadette who understands the system protects herself better than one who's just been warned about it.
+
+**Vocabulary:** packet, router, IP address, encryption, key, HTTPS, server, metadata.
+
+---
+
+## Cybersecurity Basics (2 hours)
+
+**Badge theme:** How the internet works — networks, packets, encryption — and what happens to your data along the way.
+
+### Materials
+- Envelope-and-index-card kits for the packet game (messages split across 3 numbered cards)
+- Caesar-cipher wheels (printable) + a "key" slip per pair
+- Devices with the **NOVA Cybersecurity Lab** (pbs.org/wgbh/nova/labs/lab/cyber/) or CYBER.ORG activities
+- "Data trail" scenario cards (sign up for an app, post a photo, take a quiz, connect to café Wi-Fi)
+
+### Activity 1 — The Packet Game (25 min)
+Real messages don't travel whole — they're split into **packets** that hop router to router and reassemble at the destination. Simulate it: senders split a message across three numbered cards, hand them to different "router" Scouts, who pass them (possibly out of order, one deliberately delayed) to the receiver, who reassembles by number. Round 2: a "snooping router" reads unprotected cards aloud. **Debrief:** your data crosses machines you don't control — which is exactly why encryption exists.
+
+### Activity 2 — Encryption, For Real (25 min)
+Pairs encrypt messages with cipher wheels and exchange them through the snooping router — who now gets gibberish. Then the key idea Cadettes are ready for: modern encryption is this concept with math too hard to break, and **HTTPS** (the padlock in the browser) means it's happening automatically. New rule of thumb: no padlock, no passwords.
+
+### Activity 3 — Where Does Your Data Go? (30 min)
+Work the data-trail scenario cards in teams: for each action, map what data is generated, who receives it, and where it might travel from there (the app's **server**, advertisers, "free" quiz companies). Introduce **metadata** — even without content, the *when/where/who* of your activity tells a story. Honest, calm framing: data is the price of "free," so Cadettes should know what they're paying.
+
+### Activity 4 — NOVA Cyber Lab Round (25 min) + Wrap (15 min)
+Teams play the defense-focused lab game, connecting today's concepts to attacks and defenses in the simulation. Closing: each Scout states one thing she understood about the internet today that she didn't this morning, and one behavior she'll change because of it.
+
+> **Robot moment (optional):** Share for 60 seconds how the robot and driver station exchange packets over a locked-down field network — and why the connection is secured so only the team's station can command their robot.
+
+### Completion Checklist — Cybersecurity Basics
+By the end of the session, to earn the badge, each Scout can:
+- [ ] Explain how data travels the internet in packets through routers
+- [ ] Encrypt and decrypt a message and explain what HTTPS signals
+- [ ] Map where personal data goes after an everyday online action
+- [ ] Explain what metadata reveals even without message content
+
+---
+
+## Mentor Guide (for the robotics team)
+
+- **Treat Cadettes as capable of the real thing.** Packets, HTTPS, metadata — actual mechanics, honestly explained, beat vague warnings every time.
+- **You don't need a robot for this.** The "robot moment" is a 60-second add-on.
+- **Stage the gibberish moment.** The snooper reading encrypted nonsense out loud is the session's best beat — set it up deliberately.
+- **Keep the data-trail activity factual, not doom-y.** The tone is "know the system," not "the internet is out to get you."
+- **Tie every abstraction to the physical games.** When the lab game mentions encryption, point back at the cipher wheels.
+
+---
+
+## 📣 Share Your Impact — required for teams and troops using this curriculum
+
+If you use Girls Build Bots materials to run a workshop, please complete all three:
+
+1. **Credit us.** Tell your Scouts and audience that the curriculum comes from Girls Build Bots, and credit "Girls Build Bots" anywhere you share about the event.
+2. **Tag us.** Post about your workshop and tag **@girlsbuildbots** on Instagram.
+3. **Report your results.** Email **girlsbuildbots@gmail.com** with: the number of girls who participated, the number of badges earned, and a sentence or two of feedback on how it went.
+
+This is how the program grows and how we measure our impact — your report becomes part of the Girls Build Bots story and helps the next troop and team.
+
+---
+
+*Created for the "Girls Build Bots" Girl Scout Gold Award project. Original curriculum aligned to the Cadette Cybersecurity badge series; official requirements © Girl Scouts of the USA, available to troop leaders in the Volunteer Toolkit.*

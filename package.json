@@ -7,7 +7,10 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "badges": "node scripts/import-badges.mjs && node scripts/import-lesson-plans.mjs",
+    "photos": "node scripts/process-photos.mjs",
+    "decks": "node scripts/make-decks.mjs"
   },
   "dependencies": {
     "@astrojs/starlight": "^0.41.4",
