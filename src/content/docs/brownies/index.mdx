@@ -6,6 +6,8 @@ level: brownie
 
 import { Badge } from '@astrojs/starlight/components';
 import LevelPill from '../../../components/LevelPill.astro';
+import PhotoFigure from '../../../components/PhotoFigure.astro';
+import levelPhoto from '../../../assets/photos/mentoring-scout-shop.jpg';
 
 <LevelPill level="brownies" />
 
@@ -16,6 +18,13 @@ import LevelPill from '../../../components/LevelPill.astro';
 </p>
 
 Discovery and play. Brownies learn that robots follow instructions, that code is a list of steps, that engineers try and try again — and that STEM already connects to the things they love.
+
+<PhotoFigure
+  src={levelPhoto}
+  align="center"
+  alt="Gabi, in her Girl Scout vest and robotics team shirt, standing with a young Scout in the team's shop beneath FIRST Robotics Competition banners."
+  caption="Every workshop pairs Scouts with robotics-team mentors."
+/>
 
 ## Teaching kit
 

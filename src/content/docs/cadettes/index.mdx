@@ -6,6 +6,8 @@ level: cadette
 
 import { Badge } from '@astrojs/starlight/components';
 import LevelPill from '../../../components/LevelPill.astro';
+import PhotoFigure from '../../../components/PhotoFigure.astro';
+import levelPhoto from '../../../assets/photos/camp-robot-presentations.jpg';
 
 <LevelPill level="cadettes" />
 
@@ -16,6 +18,13 @@ import LevelPill from '../../../components/LevelPill.astro';
 </p>
 
 Real engineering and real science. Cadettes program autonomous behavior, build and ship apps, investigate cybersecurity and digital forensics, and pitch their work to real audiences.
+
+<PhotoFigure
+  src={levelPhoto}
+  align="full"
+  alt="Gabi holding a small robot for a group of campers gathered around her, a 'Robot Presentations' slide on the screen behind."
+  caption="Robot presentations at summer camp."
+/>
 
 ## Teaching kit
 

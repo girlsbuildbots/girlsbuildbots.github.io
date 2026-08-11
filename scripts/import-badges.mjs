@@ -36,6 +36,28 @@ import {
 const onlyIdx = process.argv.indexOf('--only');
 const ONLY = onlyIdx > -1 ? process.argv[onlyIdx + 1] : null;
 
+/**
+ * Optional photo on a level overview, matching the level's age range. Reuses
+ * shots already published elsewhere on the site; alt text and captions are kept
+ * identical to those placements so the same image never gets two descriptions.
+ * Juniors have none — every photo is in use and repeating a third would crowd
+ * the page.
+ */
+const LEVEL_PHOTO = {
+  brownies: {
+    file: 'mentoring-scout-shop',
+    align: 'center', // portrait
+    alt: "Gabi, in her Girl Scout vest and robotics team shirt, standing with a young Scout in the team's shop beneath FIRST Robotics Competition banners.",
+    caption: 'Every workshop pairs Scouts with robotics-team mentors.',
+  },
+  cadettes: {
+    file: 'camp-robot-presentations',
+    align: 'full', // landscape
+    alt: "Gabi holding a small robot for a group of campers gathered around her, a 'Robot Presentations' slide on the screen behind.",
+    caption: 'Robot presentations at summer camp.',
+  },
+};
+
 /** "junior-robotics-curriculum.md" -> "junior-robotics-curriculum". */
 const stem = (file) => file.replace(/\.md$/, '');
 
@@ -133,6 +155,8 @@ function levelIndexPage(level, levelKey, badgeCount) {
     })
     .join('\n');
 
+  const photo = LEVEL_PHOTO[levelKey];
+
   return `---
 title: ${yaml(`${level.name} STEM Badges`)}
 description: ${yaml(`${level.grades} · ${badgeCount} STEM badges. ${firstSentence(level.tagline)}`)}
@@ -140,7 +164,13 @@ level: ${levelKey.slice(0, -1)}
 ---
 
 import { Badge } from '@astrojs/starlight/components';
-import LevelPill from '../../../components/LevelPill.astro';
+import LevelPill from '../../../components/LevelPill.astro';${
+    photo
+      ? `
+import PhotoFigure from '../../../components/PhotoFigure.astro';
+import levelPhoto from '../../../assets/photos/${photo.file}.jpg';`
+      : ''
+  }
 
 <LevelPill level="${levelKey}" />
 
@@ -151,7 +181,18 @@ import LevelPill from '../../../components/LevelPill.astro';
 </p>
 
 ${t(level.tagline)}
-
+${
+  photo
+    ? `
+<PhotoFigure
+  src={levelPhoto}
+  align="${photo.align}"
+  alt=${yaml(photo.alt)}
+  caption=${yaml(photo.caption)}
+/>
+`
+    : ''
+}
 ## Teaching kit
 
 - [**PLAN** — Full ${t(singular(level.name))} Robotics curriculum (PDF)](/downloads/lesson-plans/${stem(level.curriculum)}.pdf)

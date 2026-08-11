@@ -7,6 +7,14 @@ description: >-
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 import DownloadTable from '../../components/DownloadTable.astro';
+import PhotoFigure from '../../components/PhotoFigure.astro';
+import classroom from '../../assets/photos/camp-makecode-classroom.jpg';
+
+<PhotoFigure
+  src={classroom}
+  alt="A camp classroom of students at desktop computers, each building a game in MakeCode Arcade."
+  caption="Campers building their first programs in MakeCode Arcade."
+/>
 
 <CardGrid>
   <Card title="Official Girl Scout sources" icon="approve-check">
