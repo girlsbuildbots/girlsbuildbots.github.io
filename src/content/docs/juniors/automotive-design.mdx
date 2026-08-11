@@ -1,16 +1,24 @@
 ---
 title: "Automotive Design"
-description: "Juniors design a vehicle for a specific user and purpose — balancing style, function, and safety the way real automotive designers do.."
+description: "Juniors design a vehicle for a specific user and purpose — balancing style, function, and safety the way real automotive designers do."
 ---
 
+import { Badge } from '@astrojs/starlight/components';
 import LevelPill from '../../../components/LevelPill.astro';
+import ShareCallout from '../../../components/ShareCallout.astro';
 import ReviewForm from '../../../components/ReviewForm.astro';
 
 <LevelPill level="juniors" family="Automotive Engineering" icon="🚗" />
 
 ## About this badge
 
-Juniors design a vehicle for a specific user and purpose — balancing style, function, and safety the way real automotive designers do.
+**Badge theme:** Designing a vehicle for a specific user and purpose — balancing style, function, and safety the way real automotive designers do.
+
+### The through-line: from idea to road
+
+The Automotive series follows a vehicle through the real industry pipeline: **design** it for a user and purpose, engineer it to perform, then manufacture it at scale. Juniors are ready for the real tension designers manage: style vs. function vs. safety.
+
+**Vocabulary:** designer, user, function, style, safety, constraint, concept sketch, trade-off.
 
 :::note[Official requirements]
 The step-by-step requirements for the Junior Automotive Design badge are
@@ -22,17 +30,65 @@ badges are on the [Girl Scout Activity Zone](https://www.girlscouts.org/en/activ
 *Always verify workshop activities against the official steps before awarding the badge.*
 :::
 
-## Leading the meeting
+## Meeting plan
 
-Give each team a 'customer card' (a farmer, a delivery driver, a family with a dog) and have them sketch, then build a cardboard concept model for that customer. Open with a show-and-tell of how your team designs its drivetrain and chassis each season.
+<p class="meeting-chips">
+  <Badge text="⏱ 90–120 minutes" variant="tip" size="medium" />
+  <Badge text="👥 1 mentor per 4–5 Scouts" variant="tip" size="medium" />
+  <Badge text="🤖 Robot optional" variant="tip" size="medium" />
+</p>
 
-## Best free resources
+### Activity 1 — Every Design Is a Trade-Off (15 min)
 
-- [PBS Design Squad — engineering design challenges](https://pbskids.org/designsquad)
-- [TeachEngineering — free K–12 engineering lessons](https://www.teachengineering.org)
+Compare three real vehicle types (sports car, minivan, delivery truck) against the trade-off triangle: which corner did each design favor, and what did it give up? A sports car trades cargo space for style and speed; a delivery truck trades style for function. **Designers don't pick everything — they choose deliberately for their user.**
 
-Planning help — mentor ratios, timing, surveys, and a 6-week checklist — is in the
-[Resource Guide](/downloads/resource-guide.md).
+### Activity 2 — The Design Brief (15 min)
+
+Teams of 2–3 draw a brief card and unpack it like professionals: who's the user, what must the vehicle do (**function**), what would hurt them if it failed (**safety**), and what would make them love it (**style**)? Teams write three **must-haves** and one **nice-to-have** — that's a real requirements list, with constraints.
+
+### Activity 3 — Sketch Two, Choose One (25 min)
+
+Each team sketches **two different concepts** for their brief (side + top view, features labeled). Committing to your first idea is the rookie mistake — comparing two forces real design thinking. Teams pick one, and must say what the winning concept trades away.
+
+### Activity 4 — Build the Concept Model (35 min)
+
+Build the chosen design in cardboard/foam — a **concept model** that shows every must-have feature (a ramp that folds, a market stall that opens, weatherproof mail access). It doesn't need to drive; it needs to *communicate the design*.
+
+### Activity 5 — Design Review (10 min) + Wrap (5 min)
+
+Each team presents: user, must-haves, the trade-off they chose, and the feature they're proudest of. Audience asks one "what about…?" question per team — designers defending choices is the real job.
+
+:::tip[Robot moment (optional)]
+Share for 60 seconds how the team designs its robot each season under the same triangle — speed vs. capability vs. not-breaking — and what this year's robot traded away.
+:::
+
+### Materials
+
+- Design brief cards (a rural mail carrier; a family with a wheelchair user; a mobile dog groomer; a farmers-market vendor)
+- Sketch sheets (side view + top view outlines), markers
+- Cardboard, foam board, bottle caps, skewers, tape for concept models
+- A "trade-off triangle" poster: STYLE / FUNCTION / SAFETY at the corners
+
+## Completion checklist
+
+By the end of the session, to earn the badge, each Scout can:
+
+- [ ] Explain how style, function, and safety trade off in vehicle design
+- [ ] Turn a user's needs into a must-have requirements list
+- [ ] Compare two concept sketches and justify a choice
+- [ ] Build and present a concept model that shows the design's key features
+
+## Teach this badge
+
+- [**PLAN** — Lesson plan (PDF)](/downloads/lesson-plans/junior-automotive-design.pdf)
+- [**PLAN** — Lesson plan (PowerPoint)](/downloads/lesson-plans/junior-automotive-design.pptx)
+- [**SLIDES** — Presentation deck (PDF)](/downloads/slides/junior-automotive-design-slides.pdf)
+- [**SLIDES** — Presentation deck (PowerPoint)](/downloads/slides/junior-automotive-design-slides.pptx)
+
+The markdown sources are in [Resources & downloads](/resources/) — edit them,
+re-run `npm run decks`, and every format regenerates.
+
+<ShareCallout />
 
 <ReviewForm
   level="Juniors"

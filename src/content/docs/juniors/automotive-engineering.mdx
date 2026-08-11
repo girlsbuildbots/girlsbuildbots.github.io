@@ -1,16 +1,24 @@
 ---
 title: "Automotive Engineering"
-description: "Juniors test and refine vehicles like automotive engineers — measuring performance, changing one variable at a time, and protecting their 'passenger.'."
+description: "Juniors test and refine vehicles like automotive engineers — measuring performance, changing one variable at a time, and protecting their 'passenger.'"
 ---
 
+import { Badge } from '@astrojs/starlight/components';
 import LevelPill from '../../../components/LevelPill.astro';
+import ShareCallout from '../../../components/ShareCallout.astro';
 import ReviewForm from '../../../components/ReviewForm.astro';
 
 <LevelPill level="juniors" family="Automotive Engineering" icon="🔧" />
 
 ## About this badge
 
-Juniors test and refine vehicles like automotive engineers — measuring performance, changing one variable at a time, and protecting their 'passenger.'
+**Badge theme:** Testing and refining vehicles like automotive engineers — measuring performance, changing one variable at a time, and protecting the passenger.
+
+### The through-line: from idea to road
+
+Design it, **engineer it to perform**, manufacture it at scale. This is the test-and-measure badge: Juniors run real performance trials, protect a "passenger," and improve through fair testing.
+
+**Vocabulary:** propulsion, thrust, friction, variable, fair test, data, trial, crash safety, iterate.
 
 :::note[Official requirements]
 The step-by-step requirements for the Junior Automotive Engineering badge are
@@ -22,17 +30,58 @@ badges are on the [Girl Scout Activity Zone](https://www.girlscouts.org/en/activ
 *Always verify workshop activities against the official steps before awarding the badge.*
 :::
 
-## Leading the meeting
+## Meeting plan
 
-Ramp-test cardboard cars for distance and stability, then run the classic egg-passenger safety challenge: redesign so the egg survives the crash. Change ONE variable per test — that's the engineering habit to teach.
+<p class="meeting-chips">
+  <Badge text="⏱ 90–120 minutes" variant="tip" size="medium" />
+  <Badge text="👥 1 mentor per 4–5 Scouts" variant="tip" size="medium" />
+  <Badge text="🤖 Robot optional" variant="tip" size="medium" />
+</p>
 
-## Best free resources
+### Activity 1 — Propulsion: the Balloon Engine (15 min)
 
-- [PBS Design Squad — engineering design challenges](https://pbskids.org/designsquad)
-- [TeachEngineering — free K–12 engineering lessons](https://www.teachengineering.org)
+Blow up a balloon and let it go — it flies from **thrust**: air pushes out backward, balloon goes forward (action–reaction). Today's engine is a balloon; the engineering is making that thrust move a car *straight and far*.
 
-Planning help — mentor ratios, timing, surveys, and a 6-week checklist — is in the
-[Resource Guide](/downloads/resource-guide.md).
+### Activity 2 — Build the Balloon Car (30 min)
+
+Teams build: chassis, free-spinning axles, wheels, and a balloon with a straw nozzle taped on. First milestone: it moves under its own power. Mentors troubleshoot the classic failures — wheels rubbing the chassis (friction!), nozzle pinched, car too heavy.
+
+### Activity 3 — Test Trials with Data (30 min)
+
+Three timed trial rounds on the track. Each round: run, measure distance, **record it**, then change exactly **one variable** (nozzle width, chassis weight, wheel size, balloon inflation) and predict the effect before re-running. The data sheet is the point — engineers don't remember, they record. Best improvement (not best distance) gets the spotlight.
+
+### Activity 4 — Crash Safety Challenge (25 min)
+
+New requirement: the car must carry an egg "passenger" down the ramp into the soft wall — **and the passenger must survive**. Teams engineer restraints and crumple zones from soft materials, then crash-test. Redesign once if the passenger "gets hurt." This is real automotive safety engineering: the vehicle can fail; the passenger can't.
+
+### Materials
+
+- Balloons, flexible straws, tape, cardboard/foam chassis material, bottle-cap or CD wheels, skewer axles
+- A smooth floor test track marked with tape at 1-foot intervals
+- Data sheets: Trial / What we changed / Distance / Notes
+- Eggs (or ping-pong balls marked with faces) as "passengers"; cotton balls, bubble wrap scraps, tissue for safety engineering
+- A ramp + a soft wall (cushion/box) for the crash test
+
+## Completion checklist
+
+By the end of the session, to earn the badge, each Scout can:
+
+- [ ] Explain how thrust propels a balloon car (action–reaction)
+- [ ] Build a vehicle that moves under its own power
+- [ ] Run fair tests changing one variable at a time and record the data
+- [ ] Engineer passenger protection and evaluate it with a crash test
+
+## Teach this badge
+
+- [**PLAN** — Lesson plan (PDF)](/downloads/lesson-plans/junior-automotive-engineering.pdf)
+- [**PLAN** — Lesson plan (PowerPoint)](/downloads/lesson-plans/junior-automotive-engineering.pptx)
+- [**SLIDES** — Presentation deck (PDF)](/downloads/slides/junior-automotive-engineering-slides.pdf)
+- [**SLIDES** — Presentation deck (PowerPoint)](/downloads/slides/junior-automotive-engineering-slides.pptx)
+
+The markdown sources are in [Resources & downloads](/resources/) — edit them,
+re-run `npm run decks`, and every format regenerates.
+
+<ShareCallout />
 
 <ReviewForm
   level="Juniors"

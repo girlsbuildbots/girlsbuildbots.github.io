@@ -1,16 +1,24 @@
 ---
 title: "Cybersecurity Safeguards"
-description: "Cadettes analyze real protection strategies: authentication, social engineering defenses, and securing their own digital lives.."
+description: "Cadettes analyze real protection strategies: authentication, social engineering defenses, and securing their own digital lives."
 ---
 
+import { Badge } from '@astrojs/starlight/components';
 import LevelPill from '../../../components/LevelPill.astro';
+import ShareCallout from '../../../components/ShareCallout.astro';
 import ReviewForm from '../../../components/ReviewForm.astro';
 
 <LevelPill level="cadettes" family="Cybersecurity" icon="🛡️" />
 
 ## About this badge
 
-Cadettes analyze real protection strategies: authentication, social engineering defenses, and securing their own digital lives.
+**Badge theme:** Real protection strategies — authentication, social-engineering defense, and deliberately securing your digital life.
+
+### The through-line: understanding, protecting, investigating
+
+At the Cadette level, Safeguards gets real: attackers mostly don't hack computers — they hack *people*. Social engineering, urgency, impersonation. The defense is a calm, skeptical mind plus a few strong technical habits.
+
+**Vocabulary:** social engineering, phishing, impersonation, authentication, two-factor (2FA), password manager, privacy audit.
 
 :::note[Official requirements]
 The step-by-step requirements for the Cadette Cybersecurity Safeguards badge are
@@ -22,18 +30,61 @@ badges are on the [Girl Scout Activity Zone](https://www.girlscouts.org/en/activ
 *Always verify workshop activities against the official steps before awarding the badge.*
 :::
 
-## Leading the meeting
+## Meeting plan
 
-Run a password-strength lab (test made-up passwords, never real ones!) and a 'spot the phish' game with mentor-made example messages.
+<p class="meeting-chips">
+  <Badge text="⏱ 2 hours" variant="tip" size="medium" />
+  <Badge text="👥 1 mentor per 5–6 Scouts" variant="tip" size="medium" />
+  <Badge text="🤖 Robot optional" variant="tip" size="medium" />
+</p>
 
-## Best free resources
+### Activity 1 — Two Locks Beat One (Authentication Lab) (25 min)
 
-- [Be Internet Awesome / Interland — Google's online-safety game](https://beinternetawesome.withgoogle.com)
-- [CYBER.ORG — free K–12 cybersecurity lessons](https://cyber.org)
-- [NOVA Cybersecurity Lab — free defense simulation game](https://www.pbs.org/wgbh/nova/labs/lab/cyber/)
+Quick passphrase refresher (length beats cleverness; three-random-words method) using invented examples only — then level up to **authentication**: how does a system know you're you? Something you *know* (passphrase), something you *have* (a code on a phone — **2FA**), something you *are* (fingerprint). Demo the logic: a stolen passphrase alone fails against 2FA. Mention **password managers** as the grown-up tool: one strong master passphrase, unique passwords everywhere else. Each Scout leaves with a written personal authentication plan (made-up examples, real methods).
 
-Planning help — mentor ratios, timing, surveys, and a 6-week checklist — is in the
-[Resource Guide](/downloads/resource-guide.md).
+### Activity 2 — Social Engineering Defense (40 min)
+
+The heart of the session. Work the scenario deck in teams: for each message, identify the **manipulation lever** — urgency ("in the next 10 minutes!"), authority ("this is the school office"), emotion ("your friend is stranded"), reward ("you've been selected"). Then the counter-move: **slow down, verify through a separate channel** (call the real number, ask the real friend in person), never act on pressure. The deck's planted legit message matters: the skill is discrimination, not blanket paranoia. Score: which team correctly sorts the full deck *and* names each lever?
+
+### Activity 3 — Privacy Audit Workshop (30 min)
+
+Each Cadette works the audit checklist against her own digital life *from memory* (no logging in at the workshop): what accounts exist, what does each know, who can see what, what would she change? Deliverable: a top-three action list to complete at home **with a parent** — tighten one setting, enable 2FA somewhere, retire an unused account. Frame it as taking inventory of your own house keys.
+
+### Activity 4 — Defense Drill (15 min) + Wrap (10 min)
+
+Rapid-fire: mentors read scenarios; teams call the lever and the counter-move. Closing: each Scout names the manipulation lever she thinks would most likely have worked on her *before* today — honest self-awareness is the strongest safeguard in the room.
+
+:::tip[Robot moment (optional)]
+Share for 60 seconds how the team protects accounts and code with unique passphrases and 2FA — and why "someone urgently needs the team login" is a message you verify, never obey.
+:::
+
+### Materials
+
+- **Made-up** credential examples for the authentication lab (never real passwords — state this rule aloud)
+- Mentor-made "social engineering" scenario deck: printed DMs/emails/texts with escalating subtlety (fake giveaway → fake friend-in-trouble → fake "school office" request → one perfectly legit message mixed in)
+- "Privacy audit" checklist worksheet (account types, what each knows about you, sharing settings to review with a parent)
+- Optional: NOVA Cybersecurity Lab for reinforcement
+
+## Completion checklist
+
+By the end of the session, to earn the badge, each Scout can:
+
+- [ ] Explain authentication factors and why 2FA defeats a stolen password
+- [ ] Identify the manipulation lever in a social-engineering attempt
+- [ ] Apply the verify-through-another-channel counter-move
+- [ ] Complete a privacy audit and commit to three concrete improvements
+
+## Teach this badge
+
+- [**PLAN** — Lesson plan (PDF)](/downloads/lesson-plans/cadette-cybersecurity-safeguards.pdf)
+- [**PLAN** — Lesson plan (PowerPoint)](/downloads/lesson-plans/cadette-cybersecurity-safeguards.pptx)
+- [**SLIDES** — Presentation deck (PDF)](/downloads/slides/cadette-cybersecurity-safeguards-slides.pdf)
+- [**SLIDES** — Presentation deck (PowerPoint)](/downloads/slides/cadette-cybersecurity-safeguards-slides.pptx)
+
+The markdown sources are in [Resources & downloads](/resources/) — edit them,
+re-run `npm run decks`, and every format regenerates.
+
+<ShareCallout />
 
 <ReviewForm
   level="Cadettes"

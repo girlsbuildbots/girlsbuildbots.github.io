@@ -3,14 +3,22 @@ title: "Coding Basics"
 description: "Brownies discover that code is a set of instructions and that algorithms shape their everyday digital world."
 ---
 
+import { Badge } from '@astrojs/starlight/components';
 import LevelPill from '../../../components/LevelPill.astro';
+import ShareCallout from '../../../components/ShareCallout.astro';
 import ReviewForm from '../../../components/ReviewForm.astro';
 
 <LevelPill level="brownies" family="Coding for Good" icon="⌨️" />
 
 ## About this badge
 
-Brownies discover that code is a set of instructions and that algorithms shape their everyday digital world. Using computer science for good is the through-line of the whole series.
+**Badge theme:** Discovering that code is a set of step-by-step instructions, and that algorithms shape the digital world around us.
+
+### The through-line: coding *for good*
+
+Every badge in this series ties coding to helping people. Brownies should leave believing that code isn't just for games — it's a tool they can use to make something better for someone else. Mentors: name this out loud. "We're not just coding — we're solving a problem for a real person."
+
+**Vocabulary:** code, program, algorithm, bug, debug, sprite.
 
 :::note[Official requirements]
 The step-by-step requirements for the Brownie Coding Basics badge are
@@ -22,18 +30,66 @@ badges are on the [Girl Scout Activity Zone](https://www.girlscouts.org/en/activ
 *Always verify workshop activities against the official steps before awarding the badge.*
 :::
 
-## Leading the meeting
+## Meeting plan
 
-Works beautifully as a MakeCode Arcade session — reuse the Programming Robots deck's Arcade build as your hands-on core, then have leaders map activities to the official steps in the VTK.
+<p class="meeting-chips">
+  <Badge text="⏱ 75–90 minutes" variant="tip" size="medium" />
+  <Badge text="👥 1 mentor per 3–4 Scouts" variant="tip" size="medium" />
+  <Badge text="🤖 Robot optional" variant="tip" size="medium" />
+</p>
 
-## Best free resources
+### Activity 1 — The Algorithm Snack (15 min)
 
-- [ScratchJr — tablet coding for early readers](https://www.scratchjr.org)
-- [Code.org — free structured courses & Hour of Code](https://code.org)
-- [MakeCode Arcade — free block coding in the browser](https://arcade.makecode.com)
+An **algorithm** is just a list of steps in the right order. Scouts direct a mentor-robot to make a simple snack using only clear commands. Vague command ("make it good") → the robot freezes. Out-of-order command (milk before the cup) → a happy mess. **Debrief:** computers follow our steps *exactly*, so the order matters.
 
-Planning help — mentor ratios, timing, surveys, and a 6-week checklist — is in the
-[Resource Guide](/downloads/resource-guide.md).
+### Activity 2 — Unplugged Algorithm Cards (15 min)
+
+In pairs, Scouts arrange picture cards into the correct sequence for an everyday task (brushing teeth, planting a seed). They "run" their partner's algorithm by acting it out and hunt for **bugs** — steps missing or out of order. First taste of debugging, no screen needed.
+
+### Activity 3 — First Program On-Screen (35 min)
+
+Mentor-led, one block at a time on a projector; Scouts mirror on their own device:
+- Make a character (a "sprite")
+- Make it move across the screen
+- Make it say hello or play a sound
+- Fast finishers: change the character and add a second action
+
+Mentors circulate hands-behind-back, guiding with questions ("what do you think this block does?").
+
+### Activity 4 — Where's the Code? (10 min) + Wrap (10 min)
+
+Quick group talk: where is code hiding in their day? (traffic lights, video games, the microwave, a talking toy.) The point lands: algorithms are everywhere. Closing circle — each Scout shows one thing her program does.
+
+:::tip[Robot moment (optional)]
+Share for 60 seconds how the team's robot runs on code too — the same kind of step-by-step instructions, just controlling motors instead of a sprite.
+:::
+
+### Materials
+
+- Laptops or tablets with **ScratchJr** (tablet app) or **MakeCode Arcade** (arcade.makecode.com, any browser)
+- Printable "algorithm cards" (simple picture steps: pour, stir, pour, etc.)
+- A snack you can "program" the mentors to make (e.g., a cup of cereal + milk, or trail-mix scooping)
+
+## Completion checklist
+
+By the end of the session, to earn the badge, each Scout can:
+
+- [ ] Explain that an algorithm is a list of steps in order
+- [ ] Put steps in the right sequence and spot a "bug" when they're wrong
+- [ ] Create and run a simple program with a sprite that moves or reacts
+- [ ] Name at least one place code shows up in everyday life
+
+## Teach this badge
+
+- [**PLAN** — Lesson plan (PDF)](/downloads/lesson-plans/brownie-coding-basics.pdf)
+- [**PLAN** — Lesson plan (PowerPoint)](/downloads/lesson-plans/brownie-coding-basics.pptx)
+- [**SLIDES** — Presentation deck (PDF)](/downloads/slides/brownie-coding-basics-slides.pdf)
+- [**SLIDES** — Presentation deck (PowerPoint)](/downloads/slides/brownie-coding-basics-slides.pptx)
+
+The markdown sources are in [Resources & downloads](/resources/) — edit them,
+re-run `npm run decks`, and every format regenerates.
+
+<ShareCallout />
 
 <ReviewForm
   level="Brownies"

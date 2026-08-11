@@ -3,14 +3,22 @@ title: "App Development"
 description: "Brownies explore how apps solve problems for people and imagine an app that helps their community."
 ---
 
+import { Badge } from '@astrojs/starlight/components';
 import LevelPill from '../../../components/LevelPill.astro';
+import ShareCallout from '../../../components/ShareCallout.astro';
 import ReviewForm from '../../../components/ReviewForm.astro';
 
 <LevelPill level="brownies" family="Coding for Good" icon="📱" />
 
 ## About this badge
 
-Brownies explore how apps solve problems for people and imagine an app that helps their community. Using computer science for good is the through-line of the whole series.
+**Badge theme:** Exploring how apps solve problems for people, and designing an app that helps her community.
+
+### The through-line: coding *for good*
+
+Every badge in this series ties coding to helping people. Brownies should leave believing that code isn't just for games — it's a tool they can use to make something better for someone else. Mentors: name this out loud. "We're not just coding — we're solving a problem for a real person."
+
+**Vocabulary:** app, user, problem, design, prototype, screen, button.
 
 :::note[Official requirements]
 The step-by-step requirements for the Brownie App Development badge are
@@ -22,17 +30,65 @@ badges are on the [Girl Scout Activity Zone](https://www.girlscouts.org/en/activ
 *Always verify workshop activities against the official steps before awarding the badge.*
 :::
 
-## Leading the meeting
+## Meeting plan
 
-Run a paper-prototyping session: Scouts sketch app screens for a problem they care about, then 'click test' each other's paper apps.
+<p class="meeting-chips">
+  <Badge text="⏱ 75–90 minutes" variant="tip" size="medium" />
+  <Badge text="👥 1 mentor per 3–4 Scouts" variant="tip" size="medium" />
+  <Badge text="🤖 Robot optional" variant="tip" size="medium" />
+</p>
 
-## Best free resources
+### Activity 1 — Apps Are Problem-Solvers (15 min)
 
-- [Code.org — free structured courses & Hour of Code](https://code.org)
-- [Scratch — free coding & game design (MIT)](https://scratch.mit.edu)
+Look at a few apps the Scouts know. For each, ask the key question: **whose problem does this solve?** A weather app helps you know what to wear; a maps app helps you not get lost. Apps aren't magic — someone noticed a problem and built a fix. This is the "for good" heart of the badge.
 
-Planning help — mentor ratios, timing, surveys, and a 6-week checklist — is in the
-[Resource Guide](/downloads/resource-guide.md).
+### Activity 2 — Find a Problem Worth Solving (15 min)
+
+Brainstorm: what's a problem in their school, troop, home, or neighborhood? (Remembering to water class plants, finding lost library books, knowing when the bus comes.) No idea is too small. Each Scout picks **one** problem her app will solve.
+
+### Activity 3 — Design Your App on Paper (40 min)
+
+Using the phone-outline templates, Scouts design a **paper prototype** — the real way app designers start:
+- **Screen 1:** the welcome screen (app name + what it does)
+- **Screen 2:** the main screen (the buttons that solve the problem)
+- **Screen 3:** what happens when you tap the main button
+
+Mentors circulate asking: "What happens when someone taps here?" Paper apps don't need to work — they need to show the *idea*.
+
+### Activity 4 — "Click Test" & Share (10 min) + Wrap (5 min)
+
+In pairs, one Scout "uses" the other's paper app by pointing at buttons while the designer swaps the screens by hand — a real technique called a click-through test. Closing circle: each Scout names her app and the problem it solves in one sentence.
+
+:::tip[Robot moment (optional)]
+Share for 60 seconds how the team decides what the robot's control app needs before they build it — same "who needs this, what does it do" thinking.
+:::
+
+### Materials
+
+- "App design" paper templates (blank phone outlines — 3 screens per Scout)
+- Markers, sticky notes, scissors
+- Optional: tablets to show 2–3 real helper-apps (weather, maps, a timer)
+
+## Completion checklist
+
+By the end of the session, to earn the badge, each Scout can:
+
+- [ ] Explain that apps are built to solve problems for people
+- [ ] Name a real problem in her community an app could help with
+- [ ] Design a multi-screen paper prototype of her app
+- [ ] Show how her app works with a "click test" and describe who it helps
+
+## Teach this badge
+
+- [**PLAN** — Lesson plan (PDF)](/downloads/lesson-plans/brownie-app-development.pdf)
+- [**PLAN** — Lesson plan (PowerPoint)](/downloads/lesson-plans/brownie-app-development.pptx)
+- [**SLIDES** — Presentation deck (PDF)](/downloads/slides/brownie-app-development-slides.pdf)
+- [**SLIDES** — Presentation deck (PowerPoint)](/downloads/slides/brownie-app-development-slides.pptx)
+
+The markdown sources are in [Resources & downloads](/resources/) — edit them,
+re-run `npm run decks`, and every format regenerates.
+
+<ShareCallout />
 
 <ReviewForm
   level="Brownies"

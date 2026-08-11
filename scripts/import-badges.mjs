@@ -1,13 +1,13 @@
 /**
- * import-badges.mjs — generates Starlight content from _source/index.html.
+ * import-badges.mjs — generates the Robotics badge pages, the level overview
+ * pages and the sidebar from `_source/index.html` (see scripts/lib/levels.mjs).
  *
- * The badge library lives in the `LEVELS` object inside the source page's
- * <script> tag. That block is plain JS (no DOM access), so we slice it out and
- * evaluate it rather than re-typing any content. Nothing under _source/ is
- * ever written to.
+ * The 27 non-Robotics badges are NOT written here: their pages are built from
+ * the approved lesson plans by scripts/import-lesson-plans.mjs, and this script
+ * skips any badge that has a lesson plan so the two never fight over a file.
  *
  * Outputs:
- *   src/content/docs/<level>/<badge-slug>.mdx   one page per badge (62)
+ *   src/content/docs/<level>/<badge-slug>.mdx   Robotics pages only (9)
  *   src/content/docs/<level>/index.mdx          one overview page per level
  *   src/sidebar.generated.mjs                   sidebar tree for astro.config.mjs
  *
@@ -16,121 +16,37 @@
  *   node scripts/import-badges.mjs --only brownies/programming-robots
  */
 
-import { readFile, writeFile, mkdir } from 'node:fs/promises';
-import { dirname, join } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { writeFile, mkdir, access } from 'node:fs/promises';
+import { join } from 'node:path';
 
-const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
-const SOURCE = join(ROOT, '_source', 'index.html');
-const DOCS = join(ROOT, 'src', 'content', 'docs');
+import {
+  ROOT,
+  DOCS,
+  loadLevels,
+  decode,
+  t,
+  yaml,
+  slugify,
+  singular,
+  firstSentence,
+  officialRequirements,
+} from './lib/levels.mjs';
 
 const onlyIdx = process.argv.indexOf('--only');
 const ONLY = onlyIdx > -1 ? process.argv[onlyIdx + 1] : null;
 
-/* ------------------------------------------------------------------- trim */
-
-/**
- * The library was cut to the families a robotics team can actually staff:
- * Robotics, Coding for Good, Cybersecurity, Automotive Engineering (Brownies
- * and Juniors) and STEM Career Exploration — 13/13/10 badges. `_source/` is
- * read-only, so the cut is expressed here instead of in the source page.
- *
- * A family listed as ALL keeps every badge; an object keeps only the listed
- * badges and may rename the family. Families absent from the map are dropped.
- */
-const ALL = Symbol('keep every badge');
-const KEEP = {
-  brownies: {
-    Robotics: ALL,
-    'Coding for Good': ALL,
-    Cybersecurity: ALL,
-    'Automotive Engineering': ALL,
-    Careers: ALL,
-  },
-  juniors: {
-    Robotics: ALL,
-    'Coding for Good': ALL,
-    Cybersecurity: ALL,
-    'Automotive Engineering': ALL,
-    // Also held Digital Leadership and Entertainment Technology; with those
-    // gone the family is just the careers badge, so it takes the Careers name
-    // the other two levels use.
-    'Digital Life & Careers': {
-      name: 'Careers',
-      note: 'Single badge',
-      badges: ['STEM Career Exploration'],
-    },
-  },
-  cadettes: {
-    Robotics: ALL,
-    'Coding for Good': ALL,
-    Cybersecurity: ALL,
-    Careers: ALL,
-  },
-};
-
-/** Level taglines advertised families that no longer exist. */
-const TAGLINE = {
-  juniors:
-    'Real programming logic and structured design. Juniors write programs with loops and events, run the full engineering design process, dig into how networks and data really work, and start seeing themselves in STEM careers.',
-  cadettes:
-    'Real engineering and real science. Cadettes program autonomous behavior, build and ship apps, investigate cybersecurity and digital forensics, and pitch their work to real audiences.',
-};
-
-/* ---------------------------------------------------------------- parsing */
-
-/** Pull `R` + `LEVELS` out of the source page by evaluating the data block. */
-async function loadLevels() {
-  const html = await readFile(SOURCE, 'utf8');
-  const start = html.indexOf('/* ==================== SHARED RESOURCES');
-  const end = html.indexOf('/* ==================== RENDERERS');
-  if (start === -1 || end === -1) {
-    throw new Error('Could not locate the LEVELS data block in _source/index.html');
+/** True when the badge's page is owned by scripts/import-lesson-plans.mjs. */
+async function hasLessonPlan(levelKey, slug) {
+  const path = join(ROOT, '_source', 'lesson-plans', `${levelKey.slice(0, -1)}-${slug}.md`);
+  try {
+    await access(path);
+    return true;
+  } catch {
+    return false;
   }
-  const code = html.slice(start, end);
-  // eslint-disable-next-line no-new-func -- the sliced block is data + pure helpers
-  return new Function(`${code}\nreturn { R, LEVELS };`)();
 }
-
-/** The source strings are HTML-escaped (they were destined for innerHTML). */
-const decode = (s) =>
-  String(s)
-    .replaceAll('&amp;', '&')
-    .replaceAll('&lt;', '<')
-    .replaceAll('&gt;', '>')
-    .replaceAll('&quot;', '"')
-    .replaceAll('&#39;', "'")
-    .replaceAll('&nbsp;', ' ');
-
-/** Decoded text, made safe to drop into MDX prose. */
-const t = (s) => decode(s).replace(/([{}<>])/g, '\\$1');
-
-/** Decoded text for YAML frontmatter values (always emitted double-quoted). */
-const yaml = (s) => `"${decode(s).replace(/\\/g, '\\\\').replace(/"/g, '\\"')}"`;
-
-const slugify = (s) =>
-  decode(s)
-    .toLowerCase()
-    .replace(/&/g, ' and ')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-|-$/g, '');
-
-/** "Brownies" -> "Brownie", matching the source's officialBox() wording. */
-const singular = (levelName) => levelName.slice(0, -1);
 
 /* ---------------------------------------------------------------- sections */
-
-function officialRequirements(levelName, badgeTitle, R) {
-  return `:::note[Official requirements]
-The step-by-step requirements for the ${t(singular(levelName))} ${t(badgeTitle)} badge are
-published by Girl Scouts of the USA. Troop leaders access them free in the
-[Volunteer Toolkit](${R.vtk.url}), or purchase the badge and requirement pamphlet
-from the [Girl Scout Shop](${R.shopStem.url}). Free sample activities for many
-badges are on the [Girl Scout Activity Zone](${R.zone.url}).
-
-*Always verify workshop activities against the official steps before awarding the badge.*
-:::`;
-}
 
 function fullBadgeBody(badge, level, R) {
   return `## About this badge
@@ -155,6 +71,12 @@ ${badge.activities.map((x) => `- ${t(x)}`).join('\n')}
 
 **Materials:** ${t(badge.materials)}
 
+## Completion checklist
+
+By the end of the session, each Scout:
+
+${badge.checklist.map((x) => `- [ ] ${t(x)}`).join('\n')}
+
 ## Teach this badge
 
 - [**SLIDES** — Presentation deck: ${t(badge.title)}](/downloads/${badge.slides})
@@ -164,11 +86,7 @@ ${badge.activities.map((x) => `- ${t(x)}`).join('\n')}
 Slide decks are Marp-compatible markdown — present them with the free Marp
 extension for VS Code, or read them as a teaching script.
 
-## Completion checklist
-
-By the end of the session, each Scout:
-
-${badge.checklist.map((x) => `- [ ] ${t(x)}`).join('\n')}`;
+<ShareCallout />`;
 }
 
 function liteBadgeBody(badge, level, R) {
@@ -187,7 +105,9 @@ ${t(badge.meeting)}
 ${badge.resources.map((r) => `- [${t(r.label)}](${r.url})`).join('\n')}
 
 Planning help — mentor ratios, timing, surveys, and a 6-week checklist — is in the
-[Resource Guide](/downloads/resource-guide.md).`;
+[Resource Guide](/downloads/resource-guide.md).
+
+<ShareCallout />`;
 }
 
 function badgePage(badge, level, levelKey, family, R) {
@@ -195,6 +115,7 @@ function badgePage(badge, level, levelKey, family, R) {
   const imports = [
     `import { Badge } from '@astrojs/starlight/components';`,
     `import LevelPill from '../../../components/LevelPill.astro';`,
+    `import ShareCallout from '../../../components/ShareCallout.astro';`,
     `import ReviewForm from '../../../components/ReviewForm.astro';`,
   ];
   // Lite pages have no chips, so they don't need Starlight's Badge component.
@@ -202,7 +123,7 @@ function badgePage(badge, level, levelKey, family, R) {
 
   return `---
 title: ${yaml(badge.title)}
-description: ${yaml(`${decode(badge.about).split('. ')[0]}.`)}
+description: ${yaml(firstSentence(badge.about))}
 ---
 
 ${imports.join('\n')}
@@ -231,7 +152,7 @@ function levelIndexPage(level, levelKey, badgeCount) {
 
   return `---
 title: ${yaml(`${level.name} STEM Badges`)}
-description: ${yaml(`${level.grades} · ${badgeCount} STEM badges. ${decode(level.tagline).split('. ')[0]}.`)}
+description: ${yaml(`${level.grades} · ${badgeCount} STEM badges. ${firstSentence(level.tagline)}`)}
 ---
 
 import { Badge } from '@astrojs/starlight/components';
@@ -293,37 +214,10 @@ ${groups.join('\n')}
 
 /* ---------------------------------------------------------------- main */
 
-/** Apply KEEP/TAGLINE to the parsed source, in place of editing `_source/`. */
-function trim(LEVELS) {
-  for (const [levelKey, level] of Object.entries(LEVELS)) {
-    const keep = KEEP[levelKey];
-    if (!keep) throw new Error(`No KEEP entry for level "${levelKey}"`);
-    if (TAGLINE[levelKey]) level.tagline = TAGLINE[levelKey];
-
-    level.families = level.families.flatMap((fam) => {
-      const rule = keep[decode(fam.name)];
-      if (!rule) return [];
-      if (rule === ALL) return [fam];
-      fam.badges = fam.badges.filter((b) => rule.badges.includes(decode(b.title)));
-      if (rule.name) fam.name = rule.name;
-      if (rule.note) fam.note = rule.note;
-      return [fam];
-    });
-
-    const unmatched = Object.keys(keep).filter(
-      (name) => !level.families.some((f) => decode(f.name) === name || keep[name]?.name === decode(f.name))
-    );
-    if (unmatched.length) {
-      throw new Error(`KEEP names not found in ${levelKey}: ${unmatched.join(', ')}`);
-    }
-  }
-  return LEVELS;
-}
-
-const { R, LEVELS: RAW_LEVELS } = await loadLevels();
-const LEVELS = trim(RAW_LEVELS);
+const { R, LEVELS } = await loadLevels();
 
 let written = 0;
+let skipped = 0;
 for (const [levelKey, level] of Object.entries(LEVELS)) {
   const badgeCount = level.families.reduce((n, f) => n + f.badges.length, 0);
   const dir = join(DOCS, levelKey);
@@ -331,8 +225,13 @@ for (const [levelKey, level] of Object.entries(LEVELS)) {
 
   for (const family of level.families) {
     for (const badge of family.badges) {
-      const path = `${levelKey}/${slugify(badge.title)}`;
+      const slug = slugify(badge.title);
+      const path = `${levelKey}/${slug}`;
       if (ONLY && ONLY !== path) continue;
+      if (await hasLessonPlan(levelKey, slug)) {
+        skipped++;
+        continue;
+      }
       await writeFile(join(DOCS, `${path}.mdx`), badgePage(badge, level, levelKey, family, R), 'utf8');
       written++;
       console.log(`  ${path}.mdx`);
@@ -355,4 +254,6 @@ const total = Object.values(LEVELS).reduce(
   (n, l) => n + l.families.reduce((m, f) => m + f.badges.length, 0),
   0
 );
-console.log(`\n${written} file(s) written. ${total} badges in source.`);
+console.log(
+  `\n${written} file(s) written, ${skipped} lesson-plan page(s) left to import-lesson-plans.mjs. ${total} badges in library.`
+);

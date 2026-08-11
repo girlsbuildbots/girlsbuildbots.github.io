@@ -3,14 +3,22 @@ title: "Digital Game Design"
 description: "Cadettes design and prototype a digital game with mechanics, playtesting, and iteration."
 ---
 
+import { Badge } from '@astrojs/starlight/components';
 import LevelPill from '../../../components/LevelPill.astro';
+import ShareCallout from '../../../components/ShareCallout.astro';
 import ReviewForm from '../../../components/ReviewForm.astro';
 
 <LevelPill level="cadettes" family="Coding for Good" icon="🎮" />
 
 ## About this badge
 
-Cadettes design and prototype a digital game with mechanics, playtesting, and iteration. Using computer science for good is the through-line of the whole series.
+**Badge theme:** Designing and prototyping a digital game with real mechanics, structured playtesting, and iteration.
+
+### The through-line: coding *for good*
+
+Cadettes can handle the designer's real responsibility: games shape how players feel. Mechanics create emotions — tension, mastery, delight — and good designers wield that deliberately and ethically (fun without manipulation).
+
+**Vocabulary:** mechanic, dynamic, difficulty curve, game feel, balance, playtest protocol, iteration, scope.
 
 :::note[Official requirements]
 The step-by-step requirements for the Cadette Digital Game Design badge are
@@ -22,18 +30,66 @@ badges are on the [Girl Scout Activity Zone](https://www.girlscouts.org/en/activ
 *Always verify workshop activities against the official steps before awarding the badge.*
 :::
 
-## Leading the meeting
+## Meeting plan
 
-Our Battery Chase / Warehouse Robot builds from the Robotics decks are complete game-design sessions: sprites, rules, win conditions, and playtesting are all built in.
+<p class="meeting-chips">
+  <Badge text="⏱ 2 hours" variant="tip" size="medium" />
+  <Badge text="👥 1 mentor per 5–6 Scouts" variant="tip" size="medium" />
+  <Badge text="🤖 Robot optional" variant="tip" size="medium" />
+</p>
 
-## Best free resources
+### Activity 1 — Mechanics Make Feelings (20 min)
 
-- [MakeCode Arcade — free block coding in the browser](https://arcade.makecode.com)
-- [Scratch — free coding & game design (MIT)](https://scratch.mit.edu)
-- [Code.org — free structured courses & Hour of Code](https://code.org)
+Analyze how designers engineer emotion: a countdown timer creates *tension*; a growing combo counter creates *mastery*; a near-miss creates *"one more try."* Pick a game the room knows and dissect: what's its **core mechanic**, and what feeling does it manufacture? Add the ethics beat Cadettes are ready for: the same tools can be used to respect players or to hook them unfairly — designing *for good* means fun that leaves players glad they played.
 
-Planning help — mentor ratios, timing, surveys, and a 6-week checklist — is in the
-[Resource Guide](/downloads/resource-guide.md).
+### Activity 2 — Design Doc with a Difficulty Curve (20 min)
+
+Each Scout (or pair) writes a one-page design doc: one core mechanic, a goal, a **fail state**, the intended feeling, and — new at this level — a sketched **difficulty curve** (how does minute three get harder than minute one? faster enemies? shorter timer? more obstacles?). Scope rule: one mechanic, executed well, beats four executed poorly.
+
+### Activity 3 — Build the Prototype (50 min)
+
+Build in MakeCode Arcade to each doc:
+1. Core loop: player, objective, fail state
+2. Score + win/lose conditions
+3. **The difficulty curve, implemented** — a variable that ramps speed, spawn rate, or time pressure as score climbs
+4. Game feel pass: add sound effects and a screen shake or flash on key events — tiny touches, huge difference
+5. Stretch: a title screen and a "play again" flow
+
+### Activity 4 — Structured Playtest + Iterate (20 min) + Wrap (10 min)
+
+Run a real **playtest protocol**, not just a swap: the designer silently *observes* a tester play for two minutes (where do they struggle? smile? quit?), then asks three interview questions (What was the goal? What frustrated you? What would you change?). Notes go on the protocol sheet; designer implements **one change** from the data. Closing: each designer names the observation that surprised them most — that surprise is why studios playtest.
+
+:::tip[Robot moment (optional)]
+Share for 60 seconds how the team dissects each season's new competition game — mechanics, scoring, fail states — before designing a robot to win it. Same analysis, 120-pound game piece.
+:::
+
+### Materials
+
+- Laptops with **MakeCode Arcade** (arcade.makecode.com)
+- Design doc template: Core mechanic / Goal / Fail state / Difficulty curve / Intended feeling
+- Playtest protocol sheets (observation half + interview half)
+- Projector; sticky notes
+
+## Completion checklist
+
+By the end of the session, to earn the badge, each Scout can:
+
+- [ ] Explain how a game mechanic creates a specific player feeling
+- [ ] Write a design doc with a core mechanic, fail state, and difficulty curve
+- [ ] Build a playable prototype implementing that difficulty curve
+- [ ] Run a structured playtest and iterate based on observed data
+
+## Teach this badge
+
+- [**PLAN** — Lesson plan (PDF)](/downloads/lesson-plans/cadette-digital-game-design.pdf)
+- [**PLAN** — Lesson plan (PowerPoint)](/downloads/lesson-plans/cadette-digital-game-design.pptx)
+- [**SLIDES** — Presentation deck (PDF)](/downloads/slides/cadette-digital-game-design-slides.pdf)
+- [**SLIDES** — Presentation deck (PowerPoint)](/downloads/slides/cadette-digital-game-design-slides.pptx)
+
+The markdown sources are in [Resources & downloads](/resources/) — edit them,
+re-run `npm run decks`, and every format regenerates.
+
+<ShareCallout />
 
 <ReviewForm
   level="Cadettes"

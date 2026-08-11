@@ -3,14 +3,22 @@ title: "Digital Game Design"
 description: "Brownies learn how digital games are designed and plan a simple game of their own."
 ---
 
+import { Badge } from '@astrojs/starlight/components';
 import LevelPill from '../../../components/LevelPill.astro';
+import ShareCallout from '../../../components/ShareCallout.astro';
 import ReviewForm from '../../../components/ReviewForm.astro';
 
 <LevelPill level="brownies" family="Coding for Good" icon="🎮" />
 
 ## About this badge
 
-Brownies learn how digital games are designed and plan a simple game of their own. Using computer science for good is the through-line of the whole series.
+**Badge theme:** Learning how digital games are designed — goals, rules, and fairness — and planning and building a simple game.
+
+### The through-line: coding *for good*
+
+Every badge in this series ties coding to helping people. Brownies should leave believing that code isn't just for games — it's a tool they can use to make something better for someone else. Mentors: name this out loud. "We're not just coding — we're making something fun and fair for a real player."
+
+**Vocabulary:** code, game, goal, rule, sprite, score, playtest, bug, debug.
 
 :::note[Official requirements]
 The step-by-step requirements for the Brownie Digital Game Design badge are
@@ -22,18 +30,67 @@ badges are on the [Girl Scout Activity Zone](https://www.girlscouts.org/en/activ
 *Always verify workshop activities against the official steps before awarding the badge.*
 :::
 
-## Leading the meeting
+## Meeting plan
 
-Our Battery Chase / Warehouse Robot builds from the Robotics decks are complete game-design sessions: sprites, rules, win conditions, and playtesting are all built in.
+<p class="meeting-chips">
+  <Badge text="⏱ 75–90 minutes" variant="tip" size="medium" />
+  <Badge text="👥 1 mentor per 3–4 Scouts" variant="tip" size="medium" />
+  <Badge text="🤖 Robot optional" variant="tip" size="medium" />
+</p>
 
-## Best free resources
+### Activity 1 — What Makes a Game a Game? (15 min)
 
-- [MakeCode Arcade — free block coding in the browser](https://arcade.makecode.com)
-- [Scratch — free coding & game design (MIT)](https://scratch.mit.edu)
-- [Code.org — free structured courses & Hour of Code](https://code.org)
+Take apart a game everyone knows (tag, tic-tac-toe). Find its **goal**, its **rules**, and what makes it **fair and fun**. List them on the board — these are the same pieces every video game designer starts with.
 
-Planning help — mentor ratios, timing, surveys, and a 6-week checklist — is in the
-[Resource Guide](/downloads/resource-guide.md).
+### Activity 2 — Design On Paper First (15 min)
+
+Before touching a screen, each Scout fills a "game recipe" sheet: what's the goal, how do you win, what makes it fun? Designers always plan before they build. Mentors help each Scout keep it *small* — one goal, one way to win.
+
+### Activity 3 — Build a Collector Game (40 min)
+
+Mentor-led progressive build in MakeCode Arcade:
+- A player sprite that moves with the arrow keys
+- A "good thing" to collect (a star, an apple)
+- A score that goes up when you collect it
+- A win message when the score hits a target
+- Fast finishers: add a sound, or a "bad thing" to avoid
+
+Because there's a clear collect-and-score loop, every Scout finishes with a game she can actually play.
+
+### Activity 4 — Playtest Swap (10 min) + Wrap (5 min)
+
+Scouts swap seats and play a neighbor's game. One kind thing they liked, one idea to make it better ("two stars and a wish," Brownie-sized). **Playtesting** is a real game-design job. Closing: hands up if your game changed after someone played it.
+
+:::tip[Robot moment (optional)]
+Share for 60 seconds how a brand-new game is invented for robotics competitions every single year — the team designs strategy around fresh rules, exactly like designing a game.
+:::
+
+### Materials
+
+- Laptops/tablets with **MakeCode Arcade** (arcade.makecode.com) or **Scratch** (scratch.mit.edu)
+- "Game recipe" planning sheet: My game's goal / How you win / What makes it fun
+- A familiar playground or board game to dissect as a group
+
+## Completion checklist
+
+By the end of the session, to earn the badge, each Scout can:
+
+- [ ] Name the parts of a game: goal, rules, and what makes it fair/fun
+- [ ] Plan a simple game on paper before building it
+- [ ] Build a playable game with a goal and a way to win
+- [ ] Improve her game after someone else playtests it
+
+## Teach this badge
+
+- [**PLAN** — Lesson plan (PDF)](/downloads/lesson-plans/brownie-digital-game-design.pdf)
+- [**PLAN** — Lesson plan (PowerPoint)](/downloads/lesson-plans/brownie-digital-game-design.pptx)
+- [**SLIDES** — Presentation deck (PDF)](/downloads/slides/brownie-digital-game-design-slides.pdf)
+- [**SLIDES** — Presentation deck (PowerPoint)](/downloads/slides/brownie-digital-game-design-slides.pptx)
+
+The markdown sources are in [Resources & downloads](/resources/) — edit them,
+re-run `npm run decks`, and every format regenerates.
+
+<ShareCallout />
 
 <ReviewForm
   level="Brownies"

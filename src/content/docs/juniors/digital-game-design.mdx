@@ -3,14 +3,22 @@ title: "Digital Game Design"
 description: "Juniors design a playable digital game, thinking about rules, goals, and positive gaming."
 ---
 
+import { Badge } from '@astrojs/starlight/components';
 import LevelPill from '../../../components/LevelPill.astro';
+import ShareCallout from '../../../components/ShareCallout.astro';
 import ReviewForm from '../../../components/ReviewForm.astro';
 
 <LevelPill level="juniors" family="Coding for Good" icon="🎮" />
 
 ## About this badge
 
-Juniors design a playable digital game, thinking about rules, goals, and positive gaming. Using computer science for good is the through-line of the whole series.
+**Badge theme:** Designing a playable digital game — mechanics, rules, goals — and improving it through playtesting.
+
+### The through-line: coding *for good*
+
+Games are built *for players*. A good designer thinks about who plays, whether it's fair, and whether it's fun for everyone — positive gaming is the "for good" of this badge.
+
+**Vocabulary:** mechanic, rule, goal, win condition, difficulty, playtest, iterate, positive gaming.
 
 :::note[Official requirements]
 The step-by-step requirements for the Junior Digital Game Design badge are
@@ -22,18 +30,67 @@ badges are on the [Girl Scout Activity Zone](https://www.girlscouts.org/en/activ
 *Always verify workshop activities against the official steps before awarding the badge.*
 :::
 
-## Leading the meeting
+## Meeting plan
 
-Our Battery Chase / Warehouse Robot builds from the Robotics decks are complete game-design sessions: sprites, rules, win conditions, and playtesting are all built in.
+<p class="meeting-chips">
+  <Badge text="⏱ 90–120 minutes" variant="tip" size="medium" />
+  <Badge text="👥 1 mentor per 4–5 Scouts" variant="tip" size="medium" />
+  <Badge text="🤖 Robot optional" variant="tip" size="medium" />
+</p>
 
-## Best free resources
+### Activity 1 — Dissect a Game Like a Designer (15 min)
 
-- [MakeCode Arcade — free block coding in the browser](https://arcade.makecode.com)
-- [Scratch — free coding & game design (MIT)](https://scratch.mit.edu)
-- [Code.org — free structured courses & Hour of Code](https://code.org)
+Pick a game everyone knows. Break it into designer parts: the **goal**, the **rules**, the **win condition**, and the **difficulty curve** (does it get harder as you go?). Add one more question designers ask: is it *fair and fun for every player*? That's positive gaming.
 
-Planning help — mentor ratios, timing, surveys, and a 6-week checklist — is in the
-[Resource Guide](/downloads/resource-guide.md).
+### Activity 2 — Write the Design Doc (15 min)
+
+Every real studio starts with a design document. Each Scout fills a one-pager for her game: goal, rules, win condition, what makes it fun, and who it's for. Mentors enforce scope: one goal, one enemy or obstacle, one way to win.
+
+### Activity 3 — Build the Game (55 min)
+
+Progressive build in MakeCode Arcade:
+1. Player sprite with arrow-key movement
+2. Collectible with a score counter
+3. **Win condition** — reach the target score, show "YOU WIN"
+4. **Challenge element** — an enemy that chases, or a countdown timer
+5. Stretch: a second level or increasing speed (the difficulty curve!)
+
+Scouts implement *their* design doc, not a fixed clone — mentors help translate each Scout's idea into the same core blocks.
+
+### Activity 4 — Structured Playtest (15 min) + Wrap (10 min)
+
+Swap seats. Testers play for two minutes, then leave two sticky notes: one ⭐ (what's fun) and one 💡 (one change that would make it better). Designers make **one improvement** based on feedback — that's iteration, the most important habit in game design. Closing: who changed their game after feedback? (Everyone should.)
+
+:::tip[Robot moment (optional)]
+Share for 60 seconds how a brand-new competition game drops every season and the team's first job is exactly this analysis — goals, rules, win conditions, strategy.
+:::
+
+### Materials
+
+- Laptops with **MakeCode Arcade** (arcade.makecode.com)
+- Game design doc (one page): Goal / Rules / Win condition / What makes it fun / Who it's for
+- Projector for live coding; sticky notes for playtest feedback
+
+## Completion checklist
+
+By the end of the session, to earn the badge, each Scout can:
+
+- [ ] Break a game into its designer parts: goal, rules, win condition, difficulty
+- [ ] Write a one-page design doc before building
+- [ ] Build a playable game with a win condition and a challenge element
+- [ ] Run a playtest and improve her game based on feedback
+
+## Teach this badge
+
+- [**PLAN** — Lesson plan (PDF)](/downloads/lesson-plans/junior-digital-game-design.pdf)
+- [**PLAN** — Lesson plan (PowerPoint)](/downloads/lesson-plans/junior-digital-game-design.pptx)
+- [**SLIDES** — Presentation deck (PDF)](/downloads/slides/junior-digital-game-design-slides.pdf)
+- [**SLIDES** — Presentation deck (PowerPoint)](/downloads/slides/junior-digital-game-design-slides.pptx)
+
+The markdown sources are in [Resources & downloads](/resources/) — edit them,
+re-run `npm run decks`, and every format regenerates.
+
+<ShareCallout />
 
 <ReviewForm
   level="Juniors"

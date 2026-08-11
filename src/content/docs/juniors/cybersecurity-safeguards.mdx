@@ -1,16 +1,24 @@
 ---
 title: "Cybersecurity Safeguards"
-description: "Juniors learn practical protections: strong passwords, privacy settings, digital footprints, and phishing red flags.."
+description: "Juniors learn practical protections: strong passwords, privacy settings, digital footprints, and phishing red flags."
 ---
 
+import { Badge } from '@astrojs/starlight/components';
 import LevelPill from '../../../components/LevelPill.astro';
+import ShareCallout from '../../../components/ShareCallout.astro';
 import ReviewForm from '../../../components/ReviewForm.astro';
 
 <LevelPill level="juniors" family="Cybersecurity" icon="🛡️" />
 
 ## About this badge
 
-Juniors learn practical protections: strong passwords, privacy settings, digital footprints, and phishing red flags.
+**Badge theme:** Practical protections — strong passwords, privacy awareness, digital footprints, and spotting phishing red flags.
+
+### The through-line: being safe and smart online
+
+The series builds real digital literacy: understand how information travels (Basics), **protect it** (Safeguards), and investigate critically (Investigator). Juniors can learn concrete, practical protections they'll actually use.
+
+**Vocabulary:** password, passphrase, phishing, red flag, privacy setting, digital footprint, two-factor (a second lock).
 
 :::note[Official requirements]
 The step-by-step requirements for the Junior Cybersecurity Safeguards badge are
@@ -22,18 +30,61 @@ badges are on the [Girl Scout Activity Zone](https://www.girlscouts.org/en/activ
 *Always verify workshop activities against the official steps before awarding the badge.*
 :::
 
-## Leading the meeting
+## Meeting plan
 
-Run a password-strength lab (test made-up passwords, never real ones!) and a 'spot the phish' game with mentor-made example messages.
+<p class="meeting-chips">
+  <Badge text="⏱ 90–120 minutes" variant="tip" size="medium" />
+  <Badge text="👥 1 mentor per 4–5 Scouts" variant="tip" size="medium" />
+  <Badge text="🤖 Robot optional" variant="tip" size="medium" />
+</p>
 
-## Best free resources
+### Activity 1 — Password Strength Lab (25 min)
 
-- [Be Internet Awesome / Interland — Google's online-safety game](https://beinternetawesome.withgoogle.com)
-- [CYBER.ORG — free K–12 cybersecurity lessons](https://cyber.org)
-- [NOVA Cybersecurity Lab — free defense simulation game](https://www.pbs.org/wgbh/nova/labs/lab/cyber/)
+Sort made-up passwords weakest to strongest. Discover the rules by pattern: **longer beats clever**, mixed characters help, and a **passphrase** (three random words: "PurpleRobotTaco!") is both strong and memorable. Each Scout invents a made-up passphrase using the method — and does NOT write down or share any real one. Mention the second lock: some accounts add a code sent to a grown-up's phone (**two-factor**) — two locks beat one.
 
-Planning help — mentor ratios, timing, surveys, and a 6-week checklist — is in the
-[Resource Guide](/downloads/resource-guide.md).
+### Activity 2 — Spot the Phish (30 min)
+
+Deal the mentor-made "inbox." For each message, teams hunt **red flags**: urgent pressure ("act NOW!"), prizes for nothing, misspelled sender addresses, links that don't match, requests for personal info or passwords. Score a point per correctly-sorted message, with the rule of thumb: **real companies don't ask for your password in a message.** When unsure — don't click; ask a trusted adult.
+
+### Activity 3 — Footprints in the Sand (20 min)
+
+Scenario cards: for each action (post a photo, take a fun quiz, share a location), ask — who can see this? How long does it last? Would you want it visible in five years? Juniors grasp the honest version: things shared online can persist and travel. The safeguard: **think before you post, and use privacy settings with a grown-up's help.**
+
+### Activity 4 — My Safeguard Kit (10 min) + Wrap (5 min)
+
+Each Scout writes her personal top-three safeguards (a passphrase method, a phishing red flag she'll watch for, a think-before-posting rule). Closing: pairs quiz each other with one made-up message — phish or legit?
+
+:::tip[Robot moment (optional)]
+Share for 60 seconds how the team protects its accounts and code — strong passphrases and never sharing logins — because losing control of the robot's code would be a very bad day.
+:::
+
+### Materials
+
+- **Made-up** password examples for the strength lab (never real passwords — say this rule out loud)
+- Mentor-made "inbox" of printed example messages: some legit, some phishing (fake prize, fake "your account is locked," a too-good-to-be-true offer)
+- "Digital footprint" scenario cards (a photo posted, a comment made, a quiz taken, a location shared)
+- Optional: Interland "Tower of Treasure" for reinforcement
+
+## Completion checklist
+
+By the end of the session, to earn the badge, each Scout can:
+
+- [ ] Explain what makes a password strong and build a made-up passphrase
+- [ ] Spot at least three phishing red flags in example messages
+- [ ] Explain what a digital footprint is and why it lasts
+- [ ] Name her personal top-three safeguards
+
+## Teach this badge
+
+- [**PLAN** — Lesson plan (PDF)](/downloads/lesson-plans/junior-cybersecurity-safeguards.pdf)
+- [**PLAN** — Lesson plan (PowerPoint)](/downloads/lesson-plans/junior-cybersecurity-safeguards.pptx)
+- [**SLIDES** — Presentation deck (PDF)](/downloads/slides/junior-cybersecurity-safeguards-slides.pdf)
+- [**SLIDES** — Presentation deck (PowerPoint)](/downloads/slides/junior-cybersecurity-safeguards-slides.pptx)
+
+The markdown sources are in [Resources & downloads](/resources/) — edit them,
+re-run `npm run decks`, and every format regenerates.
+
+<ShareCallout />
 
 <ReviewForm
   level="Juniors"

@@ -1,16 +1,24 @@
 ---
 title: "Automotive Manufacturing"
-description: "Juniors explore manufacturing: assembly lines, quality control, and how thousands of identical parts become a working vehicle.."
+description: "Juniors explore manufacturing: assembly lines, quality control, and how thousands of identical parts become a working vehicle."
 ---
 
+import { Badge } from '@astrojs/starlight/components';
 import LevelPill from '../../../components/LevelPill.astro';
+import ShareCallout from '../../../components/ShareCallout.astro';
 import ReviewForm from '../../../components/ReviewForm.astro';
 
 <LevelPill level="juniors" family="Automotive Engineering" icon="🏭" />
 
 ## About this badge
 
-Juniors explore manufacturing: assembly lines, quality control, and how thousands of identical parts become a working vehicle.
+**Badge theme:** How assembly lines, quality control, and teamwork turn one design into many identical vehicles — and how factories keep improving.
+
+### The through-line: from idea to road
+
+Design it, engineer it, then **manufacture it at scale** — thousands of identical, safe vehicles. Juniors are ready for the real concepts: assembly lines, quality control, bottlenecks, and continuous improvement.
+
+**Vocabulary:** assembly line, station, quality control, defect, bottleneck, throughput, continuous improvement.
 
 :::note[Official requirements]
 The step-by-step requirements for the Junior Automotive Manufacturing badge are
@@ -22,17 +30,65 @@ badges are on the [Girl Scout Activity Zone](https://www.girlscouts.org/en/activ
 *Always verify workshop activities against the official steps before awarding the badge.*
 :::
 
-## Leading the meeting
+## Meeting plan
 
-Run an assembly-line simulation: teams mass-produce paper cars, first solo, then as a line with stations and a quality inspector. Compare speed and quality, then discuss why factories (and FRC build seasons!) divide work into roles.
+<p class="meeting-chips">
+  <Badge text="⏱ 90–120 minutes" variant="tip" size="medium" />
+  <Badge text="👥 1 mentor per 4–5 Scouts" variant="tip" size="medium" />
+  <Badge text="🤖 Robot optional" variant="tip" size="medium" />
+</p>
 
-## Best free resources
+### Activity 1 — The Scale Problem (10 min)
 
-- [TeachEngineering — free K–12 engineering lessons](https://www.teachengineering.org)
-- [PBS Design Squad — engineering design challenges](https://pbskids.org/designsquad)
+One great prototype isn't a car company — factories make *thousands*, identical and safe. How? Assembly lines: each worker masters one step as the product flows past. Today the troop becomes a factory, and we'll measure it like one.
 
-Planning help — mentor ratios, timing, surveys, and a 6-week checklist — is in the
-[Resource Guide](/downloads/resource-guide.md).
+### Activity 2 — Round 1: Craft Production (Solo Builds) (15 min)
+
+Everyone builds one complete car alone, all steps, 8 minutes. Tally: how many finished? Line them up — how identical are they? Note the honest results on the board (slow, and every car's a little different — that's craft production).
+
+### Activity 3 — Round 2: The Assembly Line (30 min)
+
+Set up stations with one Scout (or pair) per step, plus a **Quality Control inspector** with the spec card who rejects cars missing anything (rejects go back to the failing station — defects are information, not shame). Run 10 minutes. Tally throughput and defects. Almost always: more cars, more consistent — and one station drowning in a pile. Name it: a **bottleneck**.
+
+### Activity 4 — Kaizen Round: Improve the Line (25 min)
+
+Real factories never run the same line twice — they improve it (**continuous improvement**). Team huddle: where was the bottleneck? What would fix it — move a person, split a step, pre-stage supplies? Apply the top ideas and run 10 more minutes. Compare all three rounds on the tally board: solo vs. line vs. improved line. The improvement round almost always wins big — and the *Scouts* engineered that gain.
+
+### Activity 5 — Debrief (10 min) + Wrap (5 min)
+
+Three questions: Why was the line faster? Why did QC matter (would you ride in a car nobody inspected)? What did your improvement change? Count the total fleet and celebrate the team's output — manufacturing is a team sport.
+
+:::tip[Robot moment (optional)]
+Share for 60 seconds how build season runs like this — parallel stations (wiring, programming, machining), inspections before competition, and constant process improvements between events.
+:::
+
+### Materials
+
+- A standard origami/paper car design with 6–7 distinct build steps (fold, wheels, windows, stripe, headlights, final check)
+- Station signs + supplies pre-sorted per station; a **spec card** at Quality Control showing exactly what a "passing" car looks like
+- Two timers; a production tally board (made / passed QC / defects)
+- Sticky notes for the improvement round
+
+## Completion checklist
+
+By the end of the session, to earn the badge, each Scout can:
+
+- [ ] Explain why factories use assembly lines instead of solo craft builds
+- [ ] Work a station and describe how quality control catches defects
+- [ ] Identify a bottleneck from production data
+- [ ] Propose and test an improvement, and compare results across rounds
+
+## Teach this badge
+
+- [**PLAN** — Lesson plan (PDF)](/downloads/lesson-plans/junior-automotive-manufacturing.pdf)
+- [**PLAN** — Lesson plan (PowerPoint)](/downloads/lesson-plans/junior-automotive-manufacturing.pptx)
+- [**SLIDES** — Presentation deck (PDF)](/downloads/slides/junior-automotive-manufacturing-slides.pdf)
+- [**SLIDES** — Presentation deck (PowerPoint)](/downloads/slides/junior-automotive-manufacturing-slides.pptx)
+
+The markdown sources are in [Resources & downloads](/resources/) — edit them,
+re-run `npm run decks`, and every format regenerates.
+
+<ShareCallout />
 
 <ReviewForm
   level="Juniors"

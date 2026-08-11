@@ -3,14 +3,22 @@ title: "App Development"
 description: "Cadettes plan and prototype an app for social good, from user needs to interface design."
 ---
 
+import { Badge } from '@astrojs/starlight/components';
 import LevelPill from '../../../components/LevelPill.astro';
+import ShareCallout from '../../../components/ShareCallout.astro';
 import ReviewForm from '../../../components/ReviewForm.astro';
 
 <LevelPill level="cadettes" family="Coding for Good" icon="📱" />
 
 ## About this badge
 
-Cadettes plan and prototype an app for social good, from user needs to interface design. Using computer science for good is the through-line of the whole series.
+**Badge theme:** Planning and prototyping an app for social good — from user needs through interface design.
+
+### The through-line: coding *for good*
+
+This is the capstone "for good" badge: Cadettes design an app for **social good** — a real community problem, a real user, a defensible solution. The standard is professional: user research before design, design before code.
+
+**Vocabulary:** user research, problem statement, MVP (minimum viable product), wireframe, user flow, prototype, accessibility.
 
 :::note[Official requirements]
 The step-by-step requirements for the Cadette App Development badge are
@@ -22,18 +30,67 @@ badges are on the [Girl Scout Activity Zone](https://www.girlscouts.org/en/activ
 *Always verify workshop activities against the official steps before awarding the badge.*
 :::
 
-## Leading the meeting
+## Meeting plan
 
-MIT App Inventor lets Cadettes build a real installable app in one session — pair it with a paper-prototype design sprint first.
+<p class="meeting-chips">
+  <Badge text="⏱ 2 hours; +30 min with App Inventor build" variant="tip" size="medium" />
+  <Badge text="👥 1 mentor per 5–6 Scouts" variant="tip" size="medium" />
+  <Badge text="🤖 Robot optional" variant="tip" size="medium" />
+</p>
 
-## Best free resources
+### Activity 1 — Apps for Good, Deconstructed (15 min)
 
-- [MIT App Inventor — build real Android apps free](https://appinventor.mit.edu)
-- [Code.org — free structured courses & Hour of Code](https://code.org)
-- [Girls Who Code — free clubs & programs](https://girlswhocode.com)
+Examine two apps built for social good (a food-rescue app, a crisis-help finder — describe or screenshot). For each: who's the user, what problem, and **what's the smallest thing it does that helps?** Introduce the **MVP**: real developers ship the minimum that solves the problem, then grow it. Big hearts, small first versions.
 
-Planning help — mentor ratios, timing, surveys, and a 6-week checklist — is in the
-[Resource Guide](/downloads/resource-guide.md).
+### Activity 2 — User Research (25 min)
+
+Teams of 2–3 pick a community problem (a card, or better, a real one they know). A mentor role-plays the user; teams run a real interview: walk me through the problem, what have you tried, what would "solved" look like? Deliverable: a **problem statement** — *[User] needs a way to [goal] because [barrier]* — plus the top two must-haves from the user's own words. Rule: no design talk until research is done.
+
+### Activity 3 — User Flow + Wireframes (40 min)
+
+Design the MVP on paper:
+1. **User flow first:** sticky-note map of the user's path — open app → do the core thing → confirmation. Three to five steps, no more.
+2. **Wireframe each step:** one paper screen per sticky note. Core action gets the biggest button.
+3. **Accessibility pass** — new at this level: big-enough touch targets, readable text, does it work for a user who is older, in a hurry, or new to phones? Design for the *whole* community.
+4. Feature-cut round: anything not serving the problem statement gets removed. Cutting is designing.
+
+### Activity 4 — Click Test + Pitch (25 min) + Wrap (15 min)
+
+The mentor-user runs a **click test** on the paper prototype: they think aloud while "tapping"; the team silently swaps screens and takes notes, then makes one fix. Then each team gives a 90-second pitch: the problem, the user, the MVP, and what they'd build next with more time. 
+
+**Optional +30 min:** in MIT App Inventor, build the welcome screen + core button as a real running app on a phone or emulator — one working screen beats five imagined ones.
+
+:::tip[Robot moment (optional)]
+Share for 60 seconds how the team scopes its robot each season to an MVP — the minimum machine that scores — before adding stretch features. Same discipline, bigger build.
+:::
+
+### Materials
+
+- Paper wireframe templates (phone outlines, 5–6 per team) + sticky notes, markers
+- "Community problem" prompt cards (food-pantry donations coordination; new-student buddy matching; neighborhood tool-lending; elder tech-help scheduling; lost-pet alerts) — or teams bring their own real problem
+- User-interview scripts; mentors prepped to role-play users
+- Optional: laptops with **MIT App Inventor** (appinventor.mit.edu) for a working one-screen build
+
+## Completion checklist
+
+By the end of the session, to earn the badge, each Scout can:
+
+- [ ] Explain what an MVP is and why developers start there
+- [ ] Conduct user research and write a problem statement from it
+- [ ] Design a user flow and wireframes where every screen serves the user
+- [ ] Run a click test, iterate, and pitch the app's purpose and next steps
+
+## Teach this badge
+
+- [**PLAN** — Lesson plan (PDF)](/downloads/lesson-plans/cadette-app-development.pdf)
+- [**PLAN** — Lesson plan (PowerPoint)](/downloads/lesson-plans/cadette-app-development.pptx)
+- [**SLIDES** — Presentation deck (PDF)](/downloads/slides/cadette-app-development-slides.pdf)
+- [**SLIDES** — Presentation deck (PowerPoint)](/downloads/slides/cadette-app-development-slides.pptx)
+
+The markdown sources are in [Resources & downloads](/resources/) — edit them,
+re-run `npm run decks`, and every format regenerates.
+
+<ShareCallout />
 
 <ReviewForm
   level="Cadettes"

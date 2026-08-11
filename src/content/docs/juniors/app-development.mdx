@@ -3,14 +3,22 @@ title: "App Development"
 description: "Juniors learn how app developers go from a user's problem to an app design that solves it."
 ---
 
+import { Badge } from '@astrojs/starlight/components';
 import LevelPill from '../../../components/LevelPill.astro';
+import ShareCallout from '../../../components/ShareCallout.astro';
 import ReviewForm from '../../../components/ReviewForm.astro';
 
 <LevelPill level="juniors" family="Coding for Good" icon="📱" />
 
 ## About this badge
 
-Juniors learn how app developers go from a user's problem to an app design that solves it. Using computer science for good is the through-line of the whole series.
+**Badge theme:** Learning how app developers go from a user's problem to an app design that solves it.
+
+### The through-line: coding *for good*
+
+App developers start with a **user** and their problem — never with the code. This badge is the purest "for good" of the series: find someone's real problem, design the fix.
+
+**Vocabulary:** user, problem statement, feature, interface, prototype, wireframe, click test, feedback.
 
 :::note[Official requirements]
 The step-by-step requirements for the Junior App Development badge are
@@ -22,17 +30,67 @@ badges are on the [Girl Scout Activity Zone](https://www.girlscouts.org/en/activ
 *Always verify workshop activities against the official steps before awarding the badge.*
 :::
 
-## Leading the meeting
+## Meeting plan
 
-Run a paper-prototyping session: Scouts sketch app screens for a problem they care about, then 'click test' each other's paper apps.
+<p class="meeting-chips">
+  <Badge text="⏱ 90–120 minutes" variant="tip" size="medium" />
+  <Badge text="👥 1 mentor per 4–5 Scouts" variant="tip" size="medium" />
+  <Badge text="🤖 Robot optional" variant="tip" size="medium" />
+</p>
 
-## Best free resources
+### Activity 1 — Reverse-Engineer an App (15 min)
 
-- [Code.org — free structured courses & Hour of Code](https://code.org)
-- [Scratch — free coding & game design (MIT)](https://scratch.mit.edu)
+Open (or screenshot) a familiar app. Designer questions: **Who is the user? What problem does it solve? What's the very first thing you see, and why?** Notice deliberate choices — big buttons for important actions, the main thing front and center. Apps are *designed*, not accidental.
 
-Planning help — mentor ratios, timing, surveys, and a 6-week checklist — is in the
-[Resource Guide](/downloads/resource-guide.md).
+### Activity 2 — Interview Your User (20 min)
+
+Teams of 2–3 draw a **user card**. A mentor role-plays that user; Scouts interview them: "Walk me through your day. When does the problem happen? What have you tried?" Teams write a **problem statement**: *[User] needs a way to [goal] because [barrier].* Developers who skip this step build apps nobody needs.
+
+### Activity 3 — Wireframe the App (40 min)
+
+Teams design a paper prototype (a **wireframe**) of 4–5 screens:
+- Welcome screen (name + what it does, in the user's words)
+- Main screen (the one button that solves the core problem — make it big!)
+- What happens after the tap (the payoff screen)
+- One extra feature screen — *only if the user interview justifies it*
+
+Mentors circulate with the developer's question: "Which screen solves the problem statement?" If a screen doesn't serve the user, cut it — real developers cut features constantly.
+
+### Activity 4 — Click Test with the User (15 min) + Wrap (10 min)
+
+The mentor-user returns. Teams run a **click test**: the user "taps" paper buttons; the team swaps screens by hand. Does the user get their problem solved in three taps or fewer? Teams make one fix based on what confused the user. Closing: each team presents their app in one sentence — "*[App name]* helps *[user]* to *[solve problem]*."
+
+:::tip[Robot moment (optional)]
+Share for 60 seconds how the team decides what its driver dashboard needs — the driver is the user, and the interface shows exactly what matters mid-match, nothing more.
+:::
+
+### Materials
+
+- Paper wireframe templates (phone outlines, 4–5 screens per team)
+- Sticky notes, markers, scissors
+- "User cards" for interviews (a busy teacher, a grandparent who forgets medicine times, a kid who loses library books, a coach organizing rides)
+- Optional: tablets/laptops to examine 2–3 real apps' design choices
+
+## Completion checklist
+
+By the end of the session, to earn the badge, each Scout can:
+
+- [ ] Identify a real app's user and the problem it solves
+- [ ] Interview a user and write a problem statement
+- [ ] Design a multi-screen wireframe where every screen serves the user
+- [ ] Run a click test and improve the design from user feedback
+
+## Teach this badge
+
+- [**PLAN** — Lesson plan (PDF)](/downloads/lesson-plans/junior-app-development.pdf)
+- [**PLAN** — Lesson plan (PowerPoint)](/downloads/lesson-plans/junior-app-development.pptx)
+- [**SLIDES** — Presentation deck (PDF)](/downloads/slides/junior-app-development-slides.pdf)
+- [**SLIDES** — Presentation deck (PowerPoint)](/downloads/slides/junior-app-development-slides.pptx)
+
+The markdown sources are in [Resources & downloads](/resources/) — edit them,
+re-run `npm run decks`, and every format regenerates.
+
+<ShareCallout />
 
 <ReviewForm
   level="Juniors"

@@ -1,16 +1,24 @@
 ---
 title: "Cybersecurity Investigator"
-description: "Cadettes take on investigator scenarios — tracing attacks, analyzing clues, and thinking like both attacker and defender.."
+description: "Cadettes take on investigator scenarios — tracing attacks, analyzing clues, and thinking like both attacker and defender."
 ---
 
+import { Badge } from '@astrojs/starlight/components';
 import LevelPill from '../../../components/LevelPill.astro';
+import ShareCallout from '../../../components/ShareCallout.astro';
 import ReviewForm from '../../../components/ReviewForm.astro';
 
 <LevelPill level="cadettes" family="Cybersecurity" icon="🕵️‍♀️" />
 
 ## About this badge
 
-Cadettes take on investigator scenarios — tracing attacks, analyzing clues, and thinking like both attacker and defender.
+**Badge theme:** Investigating a (fictional) cyber incident end to end — tracing the attack, building an evidence chain, and recommending defenses.
+
+### The through-line: understanding, protecting, investigating
+
+The capstone: Cadettes run a full incident investigation — thinking like both the attacker (how was this done?) and the defender (how do we prove it and prevent it?). The discipline is evidence-first reasoning: no conclusion outruns its support.
+
+**Vocabulary:** incident, evidence chain, timeline, attack vector, hypothesis, corroborate, attribution, remediation.
 
 :::note[Official requirements]
 The step-by-step requirements for the Cadette Cybersecurity Investigator badge are
@@ -22,17 +30,66 @@ badges are on the [Girl Scout Activity Zone](https://www.girlscouts.org/en/activ
 *Always verify workshop activities against the official steps before awarding the badge.*
 :::
 
-## Leading the meeting
+## Meeting plan
 
-Build a mystery: mentors stage a fictional 'incident' with clues (a suspicious note, a fake login screen printout, a timeline). Scout teams investigate and present who-what-how.
+<p class="meeting-chips">
+  <Badge text="⏱ 2 hours" variant="tip" size="medium" />
+  <Badge text="👥 1 mentor per 5–6 Scouts" variant="tip" size="medium" />
+  <Badge text="🤖 Robot optional" variant="tip" size="medium" />
+</p>
 
-## Best free resources
+### Activity 1 — How Real Investigations Work (15 min)
 
-- [NOVA Cybersecurity Lab — free defense simulation game](https://www.pbs.org/wgbh/nova/labs/lab/cyber/)
-- [CYBER.ORG — free K–12 cybersecurity lessons](https://cyber.org)
+The method professionals use: secure the evidence, build a **timeline**, form **hypotheses**, test each against the evidence, and only then conclude. Two rules Cadettes adopt for the day: every claim needs an exhibit, and the goal is the *attack vector* (how it happened), not just a culprit. Warning delivered with a smile: the file contains a red herring, because real cases always do.
 
-Planning help — mentor ratios, timing, surveys, and a 6-week checklist — is in the
-[Resource Guide](/downloads/resource-guide.md).
+### Activity 2 — Work the Case (50 min)
+
+Teams of 3–4 receive the full file and work it:
+1. **Log every exhibit** with what it shows and its confidence level
+2. **Build the timeline** physically with the strips (DM → click → fake login → 2:14 AM access → spam posts)
+3. **Form hypotheses** — at least two, including the red-herring suspect — and test each: which exhibits support it? which contradict it?
+4. **Identify the attack vector** (phishing link → credential theft → account takeover) with the evidence chain that proves it
+
+Mentors float as "senior investigators": answer factual questions from a prepared key, never confirm conclusions. The red herring's collapse under evidence is the session's teachable moment — suspicion isn't proof.
+
+### Activity 3 — The Incident Report (30 min)
+
+Each team completes the report template like professionals: what happened (timeline), how (attack vector + evidence chain), what we can't prove (unknowns stated honestly — real reports always have them), and **remediation** — three defenses that would have stopped this (2FA, URL-checking habit, verify-before-clicking). The remediation section ties the whole badge series together: Basics explained the system, Safeguards taught the defenses, Investigator shows exactly where they'd have worked.
+
+### Activity 4 — Case Presentations (20 min) + Wrap (5 min)
+
+Teams brief their findings in five minutes each; the audience gets one cross-examination question per team ("how do you know the login wasn't the treasurer traveling?" — teams must answer from exhibits). Closing: each Scout names one investigative habit she's keeping — evidence before conclusions, corroborate everything, or beware the obvious suspect.
+
+:::tip[Robot moment (optional)]
+Share for 60 seconds about a time the team debugged a mystery robot failure the same way — logs, timeline, hypotheses tested one at a time — and how the first suspect is often innocent.
+:::
+
+### Materials
+
+- **The case file** (mentor-prepared, wholly fictional — invented names, no real brands): "The Bake Sale Account Takeover." A club's social account posted spam overnight. Evidence packets: (1) a phishing DM sent to the club treasurer three days prior, (2) a login-history sheet showing an unfamiliar location at 2:14 AM, (3) the treasurer's statement ("I clicked a link to 'verify' our account"), (4) a screenshot of the fake login page (subtly wrong URL), (5) a red-herring packet — a rival club member who "seemed suspicious" but whose evidence doesn't hold up
+- Evidence log sheets (Exhibit / What it shows / Corroborated by / Confidence: high-med-low)
+- Timeline strips + a wall or table to build on; incident-report template for the final brief
+
+## Completion checklist
+
+By the end of the session, to earn the badge, each Scout can:
+
+- [ ] Build an evidence log and timeline from an incident file
+- [ ] Test multiple hypotheses against evidence and reject one that fails
+- [ ] Identify an attack vector and support it with an evidence chain
+- [ ] Write remediation recommendations and defend conclusions under questioning
+
+## Teach this badge
+
+- [**PLAN** — Lesson plan (PDF)](/downloads/lesson-plans/cadette-cybersecurity-investigator.pdf)
+- [**PLAN** — Lesson plan (PowerPoint)](/downloads/lesson-plans/cadette-cybersecurity-investigator.pptx)
+- [**SLIDES** — Presentation deck (PDF)](/downloads/slides/cadette-cybersecurity-investigator-slides.pdf)
+- [**SLIDES** — Presentation deck (PowerPoint)](/downloads/slides/cadette-cybersecurity-investigator-slides.pptx)
+
+The markdown sources are in [Resources & downloads](/resources/) — edit them,
+re-run `npm run decks`, and every format regenerates.
+
+<ShareCallout />
 
 <ReviewForm
   level="Cadettes"

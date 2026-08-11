@@ -3,14 +3,22 @@ title: "Coding Basics"
 description: "Cadettes explore how code powers the technology they use daily and write programs using core CS concepts."
 ---
 
+import { Badge } from '@astrojs/starlight/components';
 import LevelPill from '../../../components/LevelPill.astro';
+import ShareCallout from '../../../components/ShareCallout.astro';
 import ReviewForm from '../../../components/ReviewForm.astro';
 
 <LevelPill level="cadettes" family="Coding for Good" icon="⌨️" />
 
 ## About this badge
 
-Cadettes explore how code powers the technology they use daily and write programs using core CS concepts. Using computer science for good is the through-line of the whole series.
+**Badge theme:** Writing programs with real computer-science concepts — conditionals, variables, loops, and events — and understanding how code powers daily technology.
+
+### The through-line: coding *for good*
+
+Cadettes get the real framing: code runs the world they live in — their feeds, their school systems, their music — and the people who write it decide how it behaves. This badge is about stepping from *user* to *builder*.
+
+**Vocabulary:** algorithm, conditional, variable, loop, event, function (a named chunk of steps), debug, pseudocode.
 
 :::note[Official requirements]
 The step-by-step requirements for the Cadette Coding Basics badge are
@@ -22,19 +30,67 @@ badges are on the [Girl Scout Activity Zone](https://www.girlscouts.org/en/activ
 *Always verify workshop activities against the official steps before awarding the badge.*
 :::
 
-## Leading the meeting
+## Meeting plan
 
-Works beautifully as a MakeCode Arcade session — reuse the Programming Robots deck's Arcade build as your hands-on core, then have leaders map activities to the official steps in the VTK.
+<p class="meeting-chips">
+  <Badge text="⏱ 2 hours" variant="tip" size="medium" />
+  <Badge text="👥 1 mentor per 5–6 Scouts" variant="tip" size="medium" />
+  <Badge text="🤖 Robot optional" variant="tip" size="medium" />
+</p>
 
-## Best free resources
+### Activity 1 — Code Runs Your Day (15 min)
 
-- [MakeCode Arcade — free block coding in the browser](https://arcade.makecode.com)
-- [Code.org — free structured courses & Hour of Code](https://code.org)
-- [MIT App Inventor — build real Android apps free](https://appinventor.mit.edu)
-- [Girls Who Code — free clubs & programs](https://girlswhocode.com)
+Trace one ordinary hour of a Cadette's day and find the code in it: the alarm (a scheduled event), the playlist shuffle (a randomizing algorithm), the thermostat (a conditional: *if* below 68, heat on). Then the honest kicker: someone *wrote* each of those decisions. Coders decide how technology behaves — that's the power this badge hands over.
 
-Planning help — mentor ratios, timing, surveys, and a 6-week checklist — is in the
-[Resource Guide](/downloads/resource-guide.md).
+### Activity 2 — The Four Tools (20 min)
+
+Whiteboard the core toolkit with a physical demo for each: **event** (when the door opens → wave), **conditional** (if I say "blue," stand up), **variable** (a running count on the board), **loop** (repeat until told to stop). Then write one line of **pseudocode** for each as a group — the bridge from idea to program.
+
+### Activity 3 — Build: Reaction-Time Tester (55 min)
+
+Progressive build of a genuinely useful program — a reaction-time game:
+1. **Event:** on button press, start the round
+2. **Variable:** a timer counts up; a score stores the best time
+3. **Conditional:** *if* pressed too early → "Too soon!"; *if* new best → update the record
+4. **Loop:** play rounds forever, tracking best score
+5. Stretch: add a two-player mode with two variables
+
+Every Scout leaves with a working program using all four tools — and it's a real tool, not a toy: reaction time is what sports scientists actually measure.
+
+### Activity 4 — Code Review Swap (20 min) + Wrap (10 min)
+
+Swap laptops. Each Scout reads her partner's program and answers on a sticky note: What does it do? Point to a conditional and a variable. One thing you'd improve. Then discuss in pairs and make one improvement to your own. **This is exactly how professional software teams work.** Closing: which of the four tools would you teach a friend first, and how?
+
+:::tip[Robot moment (optional)]
+Share for 60 seconds where each of the four tools lives in the team's robot code — sensor events, if-statements steering autonomous mode, variables tracking game state, the main control loop.
+:::
+
+### Materials
+
+- Laptops with **MakeCode Arcade** (arcade.makecode.com)
+- Projector for live coding; printed pseudocode reference card
+- Sticky notes for the code-review swap
+
+## Completion checklist
+
+By the end of the session, to earn the badge, each Scout can:
+
+- [ ] Identify code making decisions in everyday technology
+- [ ] Explain events, conditionals, variables, and loops with examples
+- [ ] Build a working program that uses all four concepts
+- [ ] Read a peer's code and give constructive review feedback
+
+## Teach this badge
+
+- [**PLAN** — Lesson plan (PDF)](/downloads/lesson-plans/cadette-coding-basics.pdf)
+- [**PLAN** — Lesson plan (PowerPoint)](/downloads/lesson-plans/cadette-coding-basics.pptx)
+- [**SLIDES** — Presentation deck (PDF)](/downloads/slides/cadette-coding-basics-slides.pdf)
+- [**SLIDES** — Presentation deck (PowerPoint)](/downloads/slides/cadette-coding-basics-slides.pptx)
+
+The markdown sources are in [Resources & downloads](/resources/) — edit them,
+re-run `npm run decks`, and every format regenerates.
+
+<ShareCallout />
 
 <ReviewForm
   level="Cadettes"

@@ -1,16 +1,24 @@
 ---
 title: "Cybersecurity Basics"
-description: "Juniors explore how information travels across networks and what makes data valuable — and vulnerable.."
+description: "Juniors explore how information travels across networks and what makes data valuable — and vulnerable."
 ---
 
+import { Badge } from '@astrojs/starlight/components';
 import LevelPill from '../../../components/LevelPill.astro';
+import ShareCallout from '../../../components/ShareCallout.astro';
 import ReviewForm from '../../../components/ReviewForm.astro';
 
 <LevelPill level="juniors" family="Cybersecurity" icon="🔐" />
 
 ## About this badge
 
-Juniors explore how information travels across networks and what makes data valuable — and vulnerable.
+**Badge theme:** How information travels across networks, what makes data valuable — and vulnerable.
+
+### The through-line: being safe and smart online
+
+The series builds real digital literacy: understand how information travels (**Basics**), protect it (Safeguards), and investigate critically (Investigator). Juniors can handle the how-it-works layer — networks, messages hopping between computers, and why data is valuable.
+
+**Vocabulary:** network, data, message, router, personal information, digital footprint, encrypt (secret code).
 
 :::note[Official requirements]
 The step-by-step requirements for the Junior Cybersecurity Basics badge are
@@ -22,18 +30,61 @@ badges are on the [Girl Scout Activity Zone](https://www.girlscouts.org/en/activ
 *Always verify workshop activities against the official steps before awarding the badge.*
 :::
 
-## Leading the meeting
+## Meeting plan
 
-Interland is a perfect hands-on core: each realm maps to an online-safety concept. Add an unplugged 'pass the message' network game — Scouts physically route messages and see how interception works.
+<p class="meeting-chips">
+  <Badge text="⏱ 90–120 minutes" variant="tip" size="medium" />
+  <Badge text="👥 1 mentor per 4–5 Scouts" variant="tip" size="medium" />
+  <Badge text="🤖 Robot optional" variant="tip" size="medium" />
+</p>
 
-## Best free resources
+### Activity 1 — The Human Internet (25 min)
 
-- [Be Internet Awesome / Interland — Google's online-safety game](https://beinternetawesome.withgoogle.com)
-- [CYBER.ORG — free K–12 cybersecurity lessons](https://cyber.org)
-- [Code.org — free structured courses & Hour of Code](https://code.org)
+Build a network out of Scouts. Senders write a short message on a card, seal it in an envelope addressed to a receiver across the room — but it must travel **hand to hand through "routers"** (Scouts in the middle) to get there. Round 2: a playful "snoop" router peeks at unsealed cards. **Debrief:** on the internet, messages hop through many computers; anyone in the path could look — which is why some messages need protecting.
 
-Planning help — mentor ratios, timing, surveys, and a 6-week checklist — is in the
-[Resource Guide](/downloads/resource-guide.md).
+### Activity 2 — Secret Codes (Encryption) (20 min)
+
+Solution to the snoop: write the message in a **cipher** before sending. Pairs encode and decode short messages with the substitution sheet. The snoop gets a coded card and can't read it. That's the core idea of **encryption** — the internet's envelope.
+
+### Activity 3 — What's Your Data Worth? (20 min)
+
+Sort the data-value cards: which would a stranger most want, and why? (Password > address > school > favorite song.) Introduce **digital footprint**: the trail of information you leave online adds up. Juniors are ready for the honest version: data is valuable, so people try to collect it — which is why we choose what to share.
+
+### Activity 4 — Interland Round (20 min) + Wrap (10 min)
+
+Play a realm reinforcing share-with-care. Closing circle: each Scout names one thing she learned about how information travels, and one piece of data she'll guard.
+
+:::tip[Robot moment (optional)]
+Share for 60 seconds how the team's robot and driver station talk over a network during matches — and why the field's network is locked down so no one else can send the robot commands.
+:::
+
+### Materials
+
+- Index cards + envelopes for the human-network game; one "router" sign per group
+- A simple substitution cipher sheet (A=1, B=2… or a Caesar wheel printout)
+- Devices with **Interland** (beinternetawesome.withgoogle.com) or CYBER.ORG activities
+- "Data value" cards (your name, your school, your password, your favorite song, your address)
+
+## Completion checklist
+
+By the end of the session, to earn the badge, each Scout can:
+
+- [ ] Explain how a message travels through a network of computers
+- [ ] Explain why some information needs protecting on its way
+- [ ] Encode and decode a message with a simple cipher
+- [ ] Rank types of personal data by value and explain her reasoning
+
+## Teach this badge
+
+- [**PLAN** — Lesson plan (PDF)](/downloads/lesson-plans/junior-cybersecurity-basics.pdf)
+- [**PLAN** — Lesson plan (PowerPoint)](/downloads/lesson-plans/junior-cybersecurity-basics.pptx)
+- [**SLIDES** — Presentation deck (PDF)](/downloads/slides/junior-cybersecurity-basics-slides.pdf)
+- [**SLIDES** — Presentation deck (PowerPoint)](/downloads/slides/junior-cybersecurity-basics-slides.pptx)
+
+The markdown sources are in [Resources & downloads](/resources/) — edit them,
+re-run `npm run decks`, and every format regenerates.
+
+<ShareCallout />
 
 <ReviewForm
   level="Juniors"
