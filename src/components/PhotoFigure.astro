@@ -1,0 +1,57 @@
+---
+// Captioned site photo. Wraps Astro's <Image /> so every placement gets
+// responsive output, a caption, and a layout that collapses to full width on
+// phones instead of floating into a too-narrow column.
+import { Image } from 'astro:assets';
+
+interface Props {
+  src: ImageMetadata;
+  /** Required. Descriptive, and never names a minor — see ADDENDUM-ABOUT-PHOTOS. */
+  alt: string;
+  caption?: string;
+  /** 'full' spans the column; 'right' floats beside the text on wide screens. */
+  align?: 'full' | 'right';
+}
+const { src, alt, caption, align = 'full' } = Astro.props;
+---
+
+<figure class={`photo-figure photo-${align} not-content`}>
+  <Image
+    src={src}
+    alt={alt}
+    widths={[400, 800, 1200]}
+    sizes={
+      align === 'right'
+        ? '(max-width: 50rem) 100vw, 22rem'
+        : '(max-width: 50rem) 100vw, 45rem'
+    }
+  />
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>
+
+<style>
+  .photo-figure {
+    margin: 1.5rem 0;
+  }
+  .photo-figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+  }
+  .photo-figure figcaption {
+    margin-top: 0.5rem;
+    font-size: var(--sl-text-xs);
+    line-height: 1.5;
+    color: var(--sl-color-gray-3);
+  }
+
+  /* Float only where there is room for text to wrap alongside. */
+  @media (min-width: 50rem) {
+    .photo-right {
+      float: right;
+      width: min(45%, 22rem);
+      margin: 0.25rem 0 1rem 1.75rem;
+    }
+  }
+</style>

@@ -28,3 +28,32 @@
   flex-wrap: wrap;
   gap: 0.5rem;
 }
+
+/* Pull-quote endorsement on /about/. */
+.testimonial {
+  clear: both;
+  margin: 2.5rem 0 0;
+  padding: 1.25rem 1.5rem;
+  border-inline-start: 4px solid var(--sl-color-accent);
+  border-radius: 0 0.5rem 0.5rem 0;
+  background: var(--sl-color-gray-7, var(--sl-color-gray-6));
+}
+
+.testimonial p {
+  margin: 0;
+  font-size: var(--sl-text-lg);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.testimonial footer {
+  margin-top: 0.75rem;
+  font-size: var(--sl-text-sm);
+  font-style: normal;
+  color: var(--sl-color-gray-2);
+}
+
+.linkedin {
+  margin-top: 2rem;
+  font-weight: 600;
+}
