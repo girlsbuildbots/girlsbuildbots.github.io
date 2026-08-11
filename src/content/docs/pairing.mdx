@@ -10,13 +10,6 @@ import PairingForm from '../../components/PairingForm.astro';
 import PhotoFigure from '../../components/PhotoFigure.astro';
 import troopVisit from '../../assets/photos/troop-visit-robotics-shop.jpg';
 
-<PhotoFigure
-  src={troopVisit}
-  align="right"
-  alt="Gabi with three younger Girl Scouts in the Walton Robotics shop, FIRST competition banners overhead and a 3D printer behind them."
-  caption="Troop meets team at the Walton Robotics shop."
-/>
-
 <CardGrid>
   <Card title="For Girl Scout troops" icon="star">
     **Find a FIRST robotics team near you**
@@ -47,5 +40,12 @@ import troopVisit from '../../assets/photos/troop-visit-robotics-shop.jpg';
       mentor guides, and surveys.
   </Card>
 </CardGrid>
+
+<PhotoFigure
+  src={troopVisit}
+  align="center"
+  alt="Gabi with three younger Girl Scouts in the Walton Robotics shop, FIRST competition banners overhead and a 3D printer behind them."
+  caption="Troop meets team at the Walton Robotics shop."
+/>
 
 <PairingForm />

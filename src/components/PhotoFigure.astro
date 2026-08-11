@@ -9,8 +9,16 @@ interface Props {
   /** Required. Descriptive, and never names a minor — see ADDENDUM-ABOUT-PHOTOS. */
   alt: string;
   caption?: string;
-  /** 'full' spans the column; 'right' floats beside the text on wide screens. */
-  align?: 'full' | 'right';
+  /**
+   * 'full'   — spans the content column.
+   * 'center' — centred and width-capped; use for portrait photos, which are
+   *            overwhelming at full column width.
+   * 'right'  — floats beside the text on wide screens. Only valid before
+   *            *prose*: a grid (Starlight's <CardGrid>) establishes its own
+   *            formatting context, so its items overlap the float instead of
+   *            wrapping around it.
+   */
+  align?: 'full' | 'center' | 'right';
 }
 const { src, alt, caption, align = 'full' } = Astro.props;
 ---
@@ -23,7 +31,9 @@ const { src, alt, caption, align = 'full' } = Astro.props;
     sizes={
       align === 'right'
         ? '(max-width: 50rem) 100vw, 22rem'
-        : '(max-width: 50rem) 100vw, 45rem'
+        : align === 'center'
+          ? '(max-width: 34rem) 100vw, 30rem'
+          : '(max-width: 50rem) 100vw, 45rem'
     }
   />
   {caption && <figcaption>{caption}</figcaption>}
@@ -44,6 +54,15 @@ const { src, alt, caption, align = 'full' } = Astro.props;
     font-size: var(--sl-text-xs);
     line-height: 1.5;
     color: var(--sl-color-gray-3);
+  }
+
+  /* Centred and capped, so a tall portrait photo doesn't dominate the page. */
+  .photo-center {
+    max-width: min(100%, 30rem);
+    margin-inline: auto;
+  }
+  .photo-center figcaption {
+    text-align: center;
   }
 
   /* Float only where there is room for text to wrap alongside. */
