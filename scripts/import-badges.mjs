@@ -27,6 +27,56 @@ const DOCS = join(ROOT, 'src', 'content', 'docs');
 const onlyIdx = process.argv.indexOf('--only');
 const ONLY = onlyIdx > -1 ? process.argv[onlyIdx + 1] : null;
 
+/* ------------------------------------------------------------------- trim */
+
+/**
+ * The library was cut to the families a robotics team can actually staff:
+ * Robotics, Coding for Good, Cybersecurity, Automotive Engineering (Brownies
+ * and Juniors) and STEM Career Exploration — 13/13/10 badges. `_source/` is
+ * read-only, so the cut is expressed here instead of in the source page.
+ *
+ * A family listed as ALL keeps every badge; an object keeps only the listed
+ * badges and may rename the family. Families absent from the map are dropped.
+ */
+const ALL = Symbol('keep every badge');
+const KEEP = {
+  brownies: {
+    Robotics: ALL,
+    'Coding for Good': ALL,
+    Cybersecurity: ALL,
+    'Automotive Engineering': ALL,
+    Careers: ALL,
+  },
+  juniors: {
+    Robotics: ALL,
+    'Coding for Good': ALL,
+    Cybersecurity: ALL,
+    'Automotive Engineering': ALL,
+    // Also held Digital Leadership and Entertainment Technology; with those
+    // gone the family is just the careers badge, so it takes the Careers name
+    // the other two levels use.
+    'Digital Life & Careers': {
+      name: 'Careers',
+      note: 'Single badge',
+      badges: ['STEM Career Exploration'],
+    },
+  },
+  cadettes: {
+    Robotics: ALL,
+    'Coding for Good': ALL,
+    Cybersecurity: ALL,
+    Careers: ALL,
+  },
+};
+
+/** Level taglines advertised families that no longer exist. */
+const TAGLINE = {
+  juniors:
+    'Real programming logic and structured design. Juniors write programs with loops and events, run the full engineering design process, dig into how networks and data really work, and start seeing themselves in STEM careers.',
+  cadettes:
+    'Real engineering and real science. Cadettes program autonomous behavior, build and ship apps, investigate cybersecurity and digital forensics, and pitch their work to real audiences.',
+};
+
 /* ---------------------------------------------------------------- parsing */
 
 /** Pull `R` + `LEVELS` out of the source page by evaluating the data block. */
@@ -243,7 +293,35 @@ ${groups.join('\n')}
 
 /* ---------------------------------------------------------------- main */
 
-const { R, LEVELS } = await loadLevels();
+/** Apply KEEP/TAGLINE to the parsed source, in place of editing `_source/`. */
+function trim(LEVELS) {
+  for (const [levelKey, level] of Object.entries(LEVELS)) {
+    const keep = KEEP[levelKey];
+    if (!keep) throw new Error(`No KEEP entry for level "${levelKey}"`);
+    if (TAGLINE[levelKey]) level.tagline = TAGLINE[levelKey];
+
+    level.families = level.families.flatMap((fam) => {
+      const rule = keep[decode(fam.name)];
+      if (!rule) return [];
+      if (rule === ALL) return [fam];
+      fam.badges = fam.badges.filter((b) => rule.badges.includes(decode(b.title)));
+      if (rule.name) fam.name = rule.name;
+      if (rule.note) fam.note = rule.note;
+      return [fam];
+    });
+
+    const unmatched = Object.keys(keep).filter(
+      (name) => !level.families.some((f) => decode(f.name) === name || keep[name]?.name === decode(f.name))
+    );
+    if (unmatched.length) {
+      throw new Error(`KEEP names not found in ${levelKey}: ${unmatched.join(', ')}`);
+    }
+  }
+  return LEVELS;
+}
+
+const { R, LEVELS: RAW_LEVELS } = await loadLevels();
+const LEVELS = trim(RAW_LEVELS);
 
 let written = 0;
 for (const [levelKey, level] of Object.entries(LEVELS)) {

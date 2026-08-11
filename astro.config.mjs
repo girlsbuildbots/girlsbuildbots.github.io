@@ -12,7 +12,7 @@ export default defineConfig({
 		starlight({
 			title: 'Girls Build Bots',
 			description:
-				'Girl Scout troops and FIRST robotics teams, paired up — with ready-to-teach curriculum for 62 STEM badges.',
+				'Girl Scout troops and FIRST robotics teams, paired up — with ready-to-teach curriculum for 36 STEM badges.',
 			customCss: ['./src/styles/custom.css'],
 			components: {
 				Footer: './src/components/Footer.astro',
