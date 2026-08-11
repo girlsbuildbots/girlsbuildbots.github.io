@@ -6,6 +6,7 @@ description: >-
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
+import DownloadTable from '../../components/DownloadTable.astro';
 
 <CardGrid>
   <Card title="Official Girl Scout sources" icon="approve-check">
@@ -35,35 +36,44 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
   </Card>
 </CardGrid>
 
-## Downloads — full document set
+## Downloads — every badge, every format
 
-Robotics-series teaching materials, as files you can print, remix, or convert to
-slides (decks are Marp-compatible markdown).
+Each badge has a **lesson plan** (the mentor's teaching guide) and a **slide
+deck** (what you present). Every one comes in three formats:
 
-### Curriculum
+- **PDF** — print it, or open it anywhere
+- **PPTX** — edit in PowerPoint, or upload to Google Drive to convert to Slides
+- **MD** — the markdown source; decks are Marp-compatible
 
-- [**PLAN** — Brownie Robotics curriculum (all 3 badges)](/downloads/brownie-robotics-curriculum.md)
-- [**PLAN** — Junior Robotics curriculum (all 3 badges)](/downloads/junior-robotics-curriculum.md)
-- [**PLAN** — Cadette Robotics curriculum (all 3 badges)](/downloads/cadette-robotics-curriculum.md)
+The three Robotics badges at each level share one full series curriculum instead
+of separate plans.
 
-### Slide decks
+### Brownies · Grades 2–3
 
-- [**SLIDES** — Brownie · Programming Robots deck](/downloads/brownie-programming-robots-slides.md)
-- [**SLIDES** — Brownie · Designing Robots deck](/downloads/brownie-designing-robots-slides.md)
-- [**SLIDES** — Brownie · Showcasing Robots deck](/downloads/brownie-showcasing-robots-slides.md)
-- [**SLIDES** — Junior · Programming Robots deck](/downloads/junior-programming-robots-slides.md)
-- [**SLIDES** — Junior · Designing Robots deck](/downloads/junior-designing-robots-slides.md)
-- [**SLIDES** — Junior · Showcasing Robots deck](/downloads/junior-showcasing-robots-slides.md)
-- [**SLIDES** — Cadette · Programming Robots deck](/downloads/cadette-programming-robots-slides.md)
-- [**SLIDES** — Cadette · Designing Robots deck](/downloads/cadette-designing-robots-slides.md)
-- [**SLIDES** — Cadette · Showcasing Robots deck](/downloads/cadette-showcasing-robots-slides.md)
+<DownloadTable level="brownies" />
+
+### Juniors · Grades 4–5
+
+<DownloadTable level="juniors" />
+
+### Cadettes · Grades 6–8
+
+<DownloadTable level="cadettes" />
 
 ### Planning
 
-- [**GUIDE** — Resource guide + workshop planning checklist](/downloads/resource-guide.md)
+- [**GUIDE** — Resource guide + workshop planning checklist (PDF)](/downloads/resource-guide.pdf) ·
+  [PPTX](/downloads/resource-guide.pptx) ·
+  [MD](/downloads/resource-guide.md)
 
-Planning a workshop? The [Resource Guide](/downloads/resource-guide.md) includes
+Planning a workshop? The [Resource Guide](/downloads/resource-guide.pdf) includes
 a 6-week planning checklist, mentor ratios, and hardware options by budget.
+
+:::tip[Editing the materials]
+The markdown files are the source of truth. Edit one, re-run `npm run decks`,
+and the PDF and PowerPoint regenerate under the same filenames — so every link
+on this site keeps working.
+:::
 
 ## After the workshop
 

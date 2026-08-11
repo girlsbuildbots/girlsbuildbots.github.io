@@ -16,7 +16,8 @@
  *   node scripts/import-badges.mjs --only brownies/programming-robots
  */
 
-import { writeFile, mkdir, access } from 'node:fs/promises';
+import { writeFile, mkdir } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 
 import {
@@ -35,16 +36,12 @@ import {
 const onlyIdx = process.argv.indexOf('--only');
 const ONLY = onlyIdx > -1 ? process.argv[onlyIdx + 1] : null;
 
+/** "junior-robotics-curriculum.md" -> "junior-robotics-curriculum". */
+const stem = (file) => file.replace(/\.md$/, '');
+
 /** True when the badge's page is owned by scripts/import-lesson-plans.mjs. */
-async function hasLessonPlan(levelKey, slug) {
-  const path = join(ROOT, '_source', 'lesson-plans', `${levelKey.slice(0, -1)}-${slug}.md`);
-  try {
-    await access(path);
-    return true;
-  } catch {
-    return false;
-  }
-}
+const hasLessonPlan = (levelKey, slug) =>
+  existsSync(join(ROOT, '_source', 'lesson-plans', `${levelKey.slice(0, -1)}-${slug}.md`));
 
 /* ---------------------------------------------------------------- sections */
 
@@ -79,58 +76,43 @@ ${badge.checklist.map((x) => `- [ ] ${t(x)}`).join('\n')}
 
 ## Teach this badge
 
-- [**SLIDES** — Presentation deck: ${t(badge.title)}](/downloads/${badge.slides})
-- [**PLAN** — Full ${t(singular(level.name))} Robotics curriculum](/downloads/${level.curriculum})
-- [**GUIDE** — Resource guide + planning checklist](/downloads/resource-guide.md)
+- [**PLAN** — Full ${t(singular(level.name))} Robotics curriculum (PDF)](/downloads/lesson-plans/${stem(level.curriculum)}.pdf)
+- [**PLAN** — Full ${t(singular(level.name))} Robotics curriculum (PowerPoint)](/downloads/lesson-plans/${stem(level.curriculum)}.pptx)
+- [**SLIDES** — Presentation deck (PDF)](/downloads/slides/${stem(badge.slides)}.pdf)
+- [**SLIDES** — Presentation deck (PowerPoint)](/downloads/slides/${stem(badge.slides)}.pptx)
+- [**GUIDE** — Resource guide + planning checklist (PDF)](/downloads/resource-guide.pdf)
 
-Slide decks are Marp-compatible markdown — present them with the free Marp
-extension for VS Code, or read them as a teaching script.
-
-<ShareCallout />`;
-}
-
-function liteBadgeBody(badge, level, R) {
-  return `## About this badge
-
-${t(badge.about)}
-
-${officialRequirements(level.name, badge.title, R)}
-
-## Leading the meeting
-
-${t(badge.meeting)}
-
-## Best free resources
-
-${badge.resources.map((r) => `- [${t(r.label)}](${r.url})`).join('\n')}
-
-Planning help — mentor ratios, timing, surveys, and a 6-week checklist — is in the
-[Resource Guide](/downloads/resource-guide.md).
+The markdown sources are in [Resources & downloads](/resources/) — the decks are
+Marp-compatible, so you can present them with the free Marp extension for VS
+Code or read them as a teaching script.
 
 <ShareCallout />`;
 }
 
 function badgePage(badge, level, levelKey, family, R) {
-  const isFull = badge.type === 'full';
-  const imports = [
-    `import { Badge } from '@astrojs/starlight/components';`,
-    `import LevelPill from '../../../components/LevelPill.astro';`,
-    `import ShareCallout from '../../../components/ShareCallout.astro';`,
-    `import ReviewForm from '../../../components/ReviewForm.astro';`,
-  ];
-  // Lite pages have no chips, so they don't need Starlight's Badge component.
-  if (!isFull) imports.shift();
+  // Every badge this script still owns is a Robotics badge with a full teaching
+  // kit; the source's "lite" badges all have lesson plans now and are built by
+  // import-lesson-plans.mjs instead. Fail loudly rather than emit a stub.
+  if (badge.type !== 'full') {
+    throw new Error(
+      `${levelKey}/${slugify(badge.title)} is a "${badge.type}" badge with no lesson plan — ` +
+        'add one to _source/lesson-plans/ so it gets a full page.'
+    );
+  }
 
   return `---
 title: ${yaml(badge.title)}
 description: ${yaml(firstSentence(badge.about))}
 ---
 
-${imports.join('\n')}
+import { Badge } from '@astrojs/starlight/components';
+import LevelPill from '../../../components/LevelPill.astro';
+import ShareCallout from '../../../components/ShareCallout.astro';
+import ReviewForm from '../../../components/ReviewForm.astro';
 
 <LevelPill level="${levelKey}" family=${yaml(family.name)} icon="${badge.ico}" />
 
-${isFull ? fullBadgeBody(badge, level, R) : liteBadgeBody(badge, level, R)}
+${fullBadgeBody(badge, level, R)}
 
 <ReviewForm
   level=${yaml(level.name)}
@@ -170,8 +152,9 @@ ${t(level.tagline)}
 
 ## Teaching kit
 
-- [**PLAN** — Full ${t(singular(level.name))} Robotics curriculum](/downloads/${level.curriculum})
-- [**GUIDE** — Resource guide + planning checklist](/downloads/resource-guide.md)
+- [**PLAN** — Full ${t(singular(level.name))} Robotics curriculum (PDF)](/downloads/lesson-plans/${stem(level.curriculum)}.pdf)
+- [**GUIDE** — Resource guide + planning checklist (PDF)](/downloads/resource-guide.pdf)
+- [**ALL** — Every plan, deck, and format](/resources/)
 
 ## Badges by family
 
@@ -212,6 +195,45 @@ ${groups.join('\n')}
 `;
 }
 
+/* -------------------------------------------------------------- downloads */
+
+/**
+ * Index of every published file, for the /resources/ download tables. Robotics
+ * badges share one curriculum per level; the other 27 each have their own
+ * lesson plan. Both cases have a per-badge deck.
+ */
+function downloadsFile(LEVELS) {
+  const levels = Object.entries(LEVELS).map(([levelKey, level]) => {
+    const prefix = levelKey.slice(0, -1);
+    const badges = level.families.flatMap((fam) =>
+      fam.badges.map((badge) => {
+        const slug = slugify(badge.title);
+        const own = hasLessonPlan(levelKey, slug);
+        return {
+          title: decode(badge.title),
+          ico: decode(badge.ico),
+          family: decode(fam.name),
+          slug,
+          plan: own ? `${prefix}-${slug}` : stem(level.curriculum),
+          sharedPlan: !own,
+          slides: own ? `${prefix}-${slug}-slides` : stem(badge.slides),
+        };
+      })
+    );
+    return {
+      key: levelKey,
+      name: decode(level.name),
+      grades: decode(level.grades),
+      curriculum: stem(level.curriculum),
+      badges,
+    };
+  });
+
+  return `// GENERATED by scripts/import-badges.mjs — do not edit by hand.
+export const downloads = ${JSON.stringify(levels, null, 2)};
+`;
+}
+
 /* ---------------------------------------------------------------- main */
 
 const { R, LEVELS } = await loadLevels();
@@ -228,7 +250,7 @@ for (const [levelKey, level] of Object.entries(LEVELS)) {
       const slug = slugify(badge.title);
       const path = `${levelKey}/${slug}`;
       if (ONLY && ONLY !== path) continue;
-      if (await hasLessonPlan(levelKey, slug)) {
+      if (hasLessonPlan(levelKey, slug)) {
         skipped++;
         continue;
       }
@@ -248,6 +270,8 @@ for (const [levelKey, level] of Object.entries(LEVELS)) {
 if (!ONLY) {
   await writeFile(join(ROOT, 'src', 'sidebar.generated.mjs'), sidebarFile(LEVELS), 'utf8');
   console.log('  src/sidebar.generated.mjs');
+  await writeFile(join(ROOT, 'src', 'downloads.generated.mjs'), downloadsFile(LEVELS), 'utf8');
+  console.log('  src/downloads.generated.mjs');
 }
 
 const total = Object.values(LEVELS).reduce(

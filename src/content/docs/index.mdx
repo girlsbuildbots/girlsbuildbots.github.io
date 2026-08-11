@@ -28,9 +28,18 @@ hero:
 ---
 
 import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+import PhotoFigure from '../../components/PhotoFigure.astro';
+import mentoring from '../../assets/photos/mentoring-scout-shop.jpg';
+import classroom from '../../assets/photos/camp-makecode-classroom.jpg';
 
 <CardGrid>
   <Card title="Why this exists" icon="puzzle">
+    <PhotoFigure
+      src={mentoring}
+      alt="Gabi, in her Girl Scout vest and robotics team shirt, standing with a young Scout in the team's shop beneath FIRST Robotics Competition banners."
+      caption="Every workshop pairs Scouts with robotics-team mentors."
+    />
+
     Robotics outreach events are everywhere — but most aren't structured to let
     Girl Scouts earn their *official* badges. Troop leaders often don't have the
     technical background to run STEM badge work themselves, and robotics teams
@@ -44,6 +53,12 @@ import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
   </Card>
 
   <Card title="How a workshop works" icon="rocket">
+    <PhotoFigure
+      src={classroom}
+      alt="A camp classroom of students at desktop computers, each building a game in MakeCode Arcade."
+      caption="Campers building their first programs in MakeCode Arcade."
+    />
+
     1. **Troop leaders pick badges and review the official requirements** in the
        free Volunteer Toolkit, then order badges from the council shop.
     2. **The robotics team preps with our materials** — full meeting plans,

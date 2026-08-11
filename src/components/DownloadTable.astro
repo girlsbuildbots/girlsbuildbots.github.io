@@ -1,0 +1,112 @@
+---
+// Every published file for one level, grouped by badge family. The index is
+// generated from the badge tree (src/downloads.generated.mjs) so /resources/
+// can never drift from what `npm run decks` actually produced.
+import { downloads } from '../downloads.generated.mjs';
+
+interface Props {
+  level: 'brownies' | 'juniors' | 'cadettes';
+}
+const { level } = Astro.props;
+
+const data = downloads.find((l) => l.key === level);
+if (!data) throw new Error(`No downloads index for level "${level}"`);
+
+// Preserve family order from the badge tree rather than sorting alphabetically.
+const families = [];
+for (const badge of data.badges) {
+  const group = families.find((f) => f.name === badge.family);
+  if (group) group.badges.push(badge);
+  else families.push({ name: badge.family, badges: [badge] });
+}
+
+const PLAN = '/downloads/lesson-plans';
+const SLIDES = '/downloads/slides';
+---
+
+<div class="downloads not-content">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Badge</th>
+        <th scope="col">Lesson plan</th>
+        <th scope="col">Slide deck</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        families.map((family) => (
+          <>
+            <tr class="family">
+              <th scope="colgroup" colspan="3">
+                {family.name}
+              </th>
+            </tr>
+            {family.badges.map((badge) => (
+              <tr>
+                <td>
+                  <a href={`/${level}/${badge.slug}/`}>
+                    {badge.ico} {badge.title}
+                  </a>
+                </td>
+                <td>
+                  <a href={`${PLAN}/${badge.plan}.pdf`}>PDF</a> ·
+                  <a href={`${PLAN}/${badge.plan}.pptx`}>PPTX</a> ·
+                  <a href={`${PLAN}/${badge.plan}.md`}>MD</a>
+                  {badge.sharedPlan && <span class="note"> (full series curriculum)</span>}
+                </td>
+                <td>
+                  <a href={`${SLIDES}/${badge.slides}.pdf`}>PDF</a> ·
+                  <a href={`${SLIDES}/${badge.slides}.pptx`}>PPTX</a> ·
+                  <a href={`${SLIDES}/${badge.slides}.md`}>MD</a>
+                </td>
+              </tr>
+            ))}
+          </>
+        ))
+      }
+    </tbody>
+  </table>
+</div>
+
+<style>
+  /* Tables are wide; let them scroll rather than pushing the page sideways. */
+  .downloads {
+    overflow-x: auto;
+    margin: 1rem 0 2rem;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--sl-text-sm);
+  }
+  th,
+  td {
+    padding: 0.45rem 0.7rem;
+    text-align: start;
+    border-bottom: 1px solid var(--sl-color-gray-5);
+    white-space: nowrap;
+  }
+  thead th {
+    font-size: var(--sl-text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--sl-color-gray-3);
+  }
+  tr.family th {
+    padding-top: 1rem;
+    font-size: var(--sl-text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--sl-color-accent-high);
+    border-bottom-color: var(--sl-color-accent);
+  }
+  td:first-child {
+    white-space: normal;
+  }
+  .note {
+    color: var(--sl-color-gray-3);
+    font-size: var(--sl-text-xs);
+    white-space: normal;
+  }
+</style>

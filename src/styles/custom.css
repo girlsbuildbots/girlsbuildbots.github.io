@@ -57,3 +57,16 @@
   margin-top: 2rem;
   font-weight: 600;
 }
+
+/* Two site photos side by side, stacking on narrow screens. */
+.photo-pair {
+  display: grid;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+@media (min-width: 45rem) {
+  .photo-pair {
+    grid-template-columns: 1fr 1fr;
+  }
+}

@@ -7,6 +7,9 @@ description: >-
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
+import PhotoFigure from '../../components/PhotoFigure.astro';
+import presentations from '../../assets/photos/camp-robot-presentations.jpg';
+import showcase from '../../assets/photos/camp-showcase-families.jpg';
 
 :::caution[Required for teams and troops using this curriculum]
 If you use Girls Build Bots materials to run a workshop, please complete all three:
@@ -33,6 +36,19 @@ If you use Girls Build Bots materials to run a workshop, please complete all thr
 
 This is how the program grows and how we measure our impact — your report
 becomes part of the Girls Build Bots story and helps the next troop and team.
+
+<div class="photo-pair">
+  <PhotoFigure
+    src={presentations}
+    alt="Gabi holding a small robot for a group of campers gathered around her, a 'Robot Presentations' slide on the screen behind."
+    caption="Robot presentations at summer camp."
+  />
+  <PhotoFigure
+    src={showcase}
+    alt="Two young campers speaking into a microphone at a summer-camp showcase while families and robotics-team members watch, LEGO kits laid out in front."
+    caption="Campers showcase their builds for families."
+  />
+</div>
 
 :::note
 The same ask is printed at the bottom of every lesson plan and every slide deck,

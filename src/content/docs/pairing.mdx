@@ -7,6 +7,15 @@ description: >-
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 import PairingForm from '../../components/PairingForm.astro';
+import PhotoFigure from '../../components/PhotoFigure.astro';
+import troopVisit from '../../assets/photos/troop-visit-robotics-shop.jpg';
+
+<PhotoFigure
+  src={troopVisit}
+  align="right"
+  alt="Gabi with three younger Girl Scouts in the Walton Robotics shop, FIRST competition banners overhead and a 3D printer behind them."
+  caption="Troop meets team at the Walton Robotics shop."
+/>
 
 <CardGrid>
   <Card title="For Girl Scout troops" icon="star">
