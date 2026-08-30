@@ -22,3 +22,7 @@ pnpm-debug.log*
 
 # local working notes, not site source
 AUDIT-FIXES.md
+
+# agent entry points; the real docs are tracked in docs/
+CLAUDE.md
+AGENTS.md

@@ -2,6 +2,9 @@
   "name": "girlsbuildbots.github.io",
   "type": "module",
   "version": "0.0.1",
+  "description": "Girls Build Bots — Girl Scout troops and FIRST robotics teams, paired up, with ready-to-teach STEM badge curriculum.",
+  "author": "Girls Build Bots",
+  "homepage": "https://girlsbuildbots.github.io",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",

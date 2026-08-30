@@ -27,6 +27,10 @@ export default defineConfig({
 			head: [
 				{
 					tag: 'meta',
+					attrs: { name: 'author', content: 'Gabriella Angryk' },
+				},
+				{
+					tag: 'meta',
 					attrs: {
 						property: 'og:image',
 						content: 'https://girlsbuildbots.github.io/og-image.png',
