@@ -13,7 +13,8 @@
  *   markdown      copied alongside, so the editable source ships too
  *
  * Outputs:
- *   public/downloads/lesson-plans/  27 badge plans + 3 Robotics curricula
+ *   public/downloads/lesson-plans/  18 badge plans + 3 Robotics curricula
+ *                                  (9 are Canva-hosted — see src/canva-overrides.json)
  *   public/downloads/slides/        27 badge decks + 9 Robotics decks
  *   public/downloads/              resource guide
  *
@@ -36,6 +37,17 @@ const SOURCE = join(ROOT, '_source');
 const PLANS = join(SOURCE, 'lesson-plans');
 const OUT = join(ROOT, 'public', 'downloads');
 const TEMPLATE = join(SOURCE, 'slide-tools', 'girlsbuildbots-template.pptx');
+
+/**
+ * Badges whose lesson plan is maintained by Gabi in Canva. The same file drives
+ * the badge pages and /resources/ (src/components/DownloadTable.astro), so a
+ * swap is one JSON edit: the page link and this exclusion move together.
+ *
+ * Their markdown stays in `_source/lesson-plans/` as provenance, but we never
+ * publish a generated plan for them — a stale PDF must not compete with hers.
+ * Slide decks are unaffected: Canva replaces the lesson plan only.
+ */
+const CANVA = JSON.parse(await readFile(join(ROOT, 'src', 'canva-overrides.json'), 'utf8'));
 
 const onlyIdx = process.argv.indexOf('--only');
 const ONLY = onlyIdx > -1 ? process.argv[onlyIdx + 1] : null;
@@ -95,10 +107,10 @@ async function collect() {
   const add = (dir, file, outDir, kind) =>
     jobs.push({ src: join(dir, file), base: basename(file, '.md'), outDir, kind });
 
-  // The 27 badge lesson plans and their 27 companion decks.
+  // The badge lesson plans and their 27 companion decks.
   for (const f of planFiles) {
     if (f.endsWith('-slides.md')) add(PLANS, f, join(OUT, 'slides'), 'deck');
-    else add(PLANS, f, join(OUT, 'lesson-plans'), 'plan');
+    else if (!CANVA[basename(f, '.md')]) add(PLANS, f, join(OUT, 'lesson-plans'), 'plan');
   }
 
   // The Robotics series predates the lesson plans and lives at the _source root:

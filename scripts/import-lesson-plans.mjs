@@ -36,6 +36,14 @@ import {
 } from './lib/levels.mjs';
 
 const PLANS = join(ROOT, '_source', 'lesson-plans');
+
+/**
+ * Badges whose lesson plan Gabi maintains in Canva. Read from the same file as
+ * scripts/make-decks.mjs and src/components/DownloadTable.astro, so the page
+ * link, the /resources/ row and the conversion exclusion can never disagree.
+ */
+const CANVA = JSON.parse(await readFile(join(ROOT, 'src', 'canva-overrides.json'), 'utf8'));
+
 const onlyIdx = process.argv.indexOf('--only');
 const ONLY = onlyIdx > -1 ? process.argv[onlyIdx + 1] : null;
 
@@ -157,6 +165,30 @@ function page(plan, { badge, family, level, levelKey }, base, R) {
     ? `\n\n:::tip[Robot moment (optional)]\n${plan.robotMoment}\n:::`
     : '';
 
+  // A Canva plan replaces the *generated* lesson-plan downloads for this badge.
+  // The decks still come from `npm run decks`, so they are listed either way.
+  const decks = [
+    `- [**SLIDES** — Presentation deck (PDF)](/downloads/slides/${base}-slides.pdf)`,
+    `- [**SLIDES** — Presentation deck (PowerPoint)](/downloads/slides/${base}-slides.pptx)`,
+  ].join('\n');
+
+  const teach = CANVA[base]
+    ? `<p class="canva-plan not-content">
+  <a href="${CANVA[base]}" target="_blank" rel="noopener">🎨 Lesson Plan (Canva)</a>
+</p>
+
+${decks}
+
+The lesson plan is maintained in Canva and opens in a new tab. The deck's
+markdown source is in [Resources & downloads](/resources/) — edit it, re-run
+\`npm run decks\`, and both deck formats regenerate.`
+    : `- [**PLAN** — Lesson plan (PDF)](/downloads/lesson-plans/${base}.pdf)
+- [**PLAN** — Lesson plan (PowerPoint)](/downloads/lesson-plans/${base}.pptx)
+${decks}
+
+The markdown sources are in [Resources & downloads](/resources/) — edit them,
+re-run \`npm run decks\`, and every format regenerates.`;
+
   return `---
 title: ${yaml(badge.title)}
 description: ${yaml(firstSentence(badge.about))}
@@ -196,13 +228,7 @@ ${plan.checklistItems.join('\n')}
 
 ## Teach this badge
 
-- [**PLAN** — Lesson plan (PDF)](/downloads/lesson-plans/${base}.pdf)
-- [**PLAN** — Lesson plan (PowerPoint)](/downloads/lesson-plans/${base}.pptx)
-- [**SLIDES** — Presentation deck (PDF)](/downloads/slides/${base}-slides.pdf)
-- [**SLIDES** — Presentation deck (PowerPoint)](/downloads/slides/${base}-slides.pptx)
-
-The markdown sources are in [Resources & downloads](/resources/) — edit them,
-re-run \`npm run decks\`, and every format regenerates.
+${teach}
 
 <ShareCallout />
 

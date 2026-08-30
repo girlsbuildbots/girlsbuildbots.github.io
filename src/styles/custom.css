@@ -29,6 +29,27 @@
   gap: 0.5rem;
 }
 
+/* Canva-hosted lesson plan: the one download that isn't a file we generate,
+ * so it gets a button instead of a link in the list. */
+.canva-plan {
+  margin: 0 0 1rem;
+}
+
+.canva-plan a {
+  display: inline-block;
+  padding: 0.5em 1.1em;
+  border-radius: 0.4rem;
+  background: var(--sl-color-accent);
+  color: var(--sl-color-white);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.canva-plan a:hover {
+  background: var(--sl-color-accent-high);
+  color: var(--sl-color-black);
+}
+
 /* Pull-quote endorsement on /about/. */
 .testimonial {
   clear: both;

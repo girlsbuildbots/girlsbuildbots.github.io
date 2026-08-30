@@ -3,6 +3,10 @@
 // generated from the badge tree (src/downloads.generated.mjs) so /resources/
 // can never drift from what `npm run decks` actually produced.
 import { downloads } from '../downloads.generated.mjs';
+// Badges whose lesson plan lives in Canva instead of public/downloads. The same
+// file excludes them from `npm run decks` and puts the link on the badge page,
+// so this table can never offer a file that is no longer generated.
+import canva from '../canva-overrides.json';
 
 interface Props {
   level: 'brownies' | 'juniors' | 'cadettes';
@@ -50,10 +54,18 @@ const SLIDES = '/downloads/slides';
                   </a>
                 </td>
                 <td>
-                  <a href={`${PLAN}/${badge.plan}.pdf`}>PDF</a> ·
-                  <a href={`${PLAN}/${badge.plan}.pptx`}>PPTX</a> ·
-                  <a href={`${PLAN}/${badge.plan}.md`}>MD</a>
-                  {badge.sharedPlan && <span class="note"> (full series curriculum)</span>}
+                  {canva[badge.plan] ? (
+                    <a href={canva[badge.plan]} target="_blank" rel="noopener">
+                      Canva ↗
+                    </a>
+                  ) : (
+                    <>
+                      <a href={`${PLAN}/${badge.plan}.pdf`}>PDF</a> ·
+                      <a href={`${PLAN}/${badge.plan}.pptx`}>PPTX</a> ·
+                      <a href={`${PLAN}/${badge.plan}.md`}>MD</a>
+                      {badge.sharedPlan && <span class="note"> (full series curriculum)</span>}
+                    </>
+                  )}
                 </td>
                 <td>
                   <a href={`${SLIDES}/${badge.slides}.pdf`}>PDF</a> ·
