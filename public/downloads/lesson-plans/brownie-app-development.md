@@ -1,6 +1,6 @@
 # Girls Build Bots — Brownie App Development
 ### Badge-aligned workshop guide for robotics-team-led outreach
-**Level:** Brownies. (Grades 2–3) · **Badge:** Coding for Good — App Development
+**Level:** Brownies (Grades 2–3) · **Badge:** Coding for Good — App Development
 **Series:** Coding for Good (Coding Basics · Digital Game Design · App Development)
 **Format:** One 75–90 minute session · **Ratio:** 1 mentor per 3–4 Scouts
 **Who runs it:** A FIRST robotics team (FLL / FTC / FRC) leading the session. A physical robot is a nice bonus but **not required** — every activity runs on free browser tools and craft supplies the team or troop can provide.
@@ -13,7 +13,7 @@
 
 Every badge in this series ties coding to helping people. Brownies should leave believing that code isn't just for games — it's a tool they can use to make something better for someone else. Mentors: name this out loud. "We're not just coding — we're solving a problem for a real person."
 
-**Vocabulary:** app, user, problem, design, prototype, screen, button.
+**Vocabulary:** app, user, problem, design, prototype, screen, button..
 
 ---
 
