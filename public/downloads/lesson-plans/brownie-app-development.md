@@ -13,7 +13,7 @@
 
 Every badge in this series ties coding to helping people. Brownies should leave believing that code isn't just for games — it's a tool they can use to make something better for someone else. Mentors: name this out loud. "We're not just coding — we're solving a problem for a real person."
 
-**Vocabulary:** app, user, problem, design, prototype, screen, button..
+**Vocabulary:** app, user, problem, design, prototype, screen, button.
 
 ---
 
