@@ -12,7 +12,7 @@
 Cadettes can handle **real engineering thinking**. They should leave able to:
 
 1. Explain the **sense → think → act** control loop and trace it through a real robot's behavior.
-2. Program with **conditionals, variables, loops, and events** — and read someone else's code.
+2. Program with **conditionals, variables, loops, and events** — and read someone else's code..
 3. Design an **assistive robot prototype** for a real human need, with documented trade-offs.
 4. Present technical work to a non-technical audience — the core skill of every engineer.
 
